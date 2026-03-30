@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>UNO 3D Multiplayer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🃏</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     HOME SCREEN
+══════════════════════════════════════════════════════════ -->
+<div id="s-home" class="screen active">
+  <div id="particles" style="position:absolute;inset:0;pointer-events:none;overflow:hidden"></div>
+  <div class="home-wrap">
+    <div class="logo">
+      <span class="logo-uno">UNO</span>
+      <span class="logo-sub">3D MULTIPLAYER</span>
+    </div>
+    <div class="variants">
+      <div class="v-card" data-v="classic">
+        <div class="v-badge">CLASSIC</div>
+        <div class="v-icon">🃏</div>
+        <div class="v-name">Classic UNO</div>
+        <div class="v-desc">The original. Match colors, numbers and symbols. First to 500 points wins.</div>
+      </div>
+      <div class="v-card" data-v="hp">
+        <div class="v-badge">SPECIAL</div>
+        <div class="v-icon">⚡</div>
+        <div class="v-name">Harry Potter</div>
+        <div class="v-desc">The Voldemort card lets you discard all Harry-numbered cards (2, 6, 9) at once.</div>
+      </div>
+      <div class="v-card" data-v="flip">
+        <div class="v-badge">UNIQUE</div>
+        <div class="v-icon">⇅</div>
+        <div class="v-name">UNO Flip™</div>
+        <div class="v-desc">Two-sided deck! Light side is tame. Dark side is brutal. A Flip card switches everything.</div>
+      </div>
+      <div class="v-card" data-v="mercy">
+        <div class="v-badge">BRUTAL</div>
+        <div class="v-icon">💀</div>
+        <div class="v-name">No Mercy</div>
+        <div class="v-desc">+10 draw, Wild Color Roulette, 25-card knockouts. The most savage UNO ever made.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SETUP SCREEN
+══════════════════════════════════════════════════════════ -->
+<div id="s-setup" class="screen">
+  <div class="setup-panel">
+    <button class="back-btn" id="back-home">← Back</button>
+    <div class="setup-hdr">
+      <span class="setup-icon" id="setup-icon">🃏</span>
+      <h1 id="setup-vtitle">Classic UNO</h1>
+    </div>
+
+    <div class="s-section">
+      <label class="s-label">Your Name</label>
+      <input type="text" id="pname-input" class="s-input" placeholder="Enter your name" maxlength="20">
+    </div>
+
+    <div class="s-section">
+      <label class="s-label">Game Mode</label>
+      <div class="mode-tabs">
+        <button class="mode-tab on" data-m="online">🌐 Online Multiplayer</button>
+        <button class="mode-tab" data-m="passplay">📱 Pass &amp; Play</button>
+      </div>
+    </div>
+
+    <!-- Online options -->
+    <div class="s-section" id="online-opts">
+      <button class="big-btn" id="btn-create" style="margin-bottom:10px">Create Room</button>
+      <div class="or-line">— or join —</div>
+      <div class="join-row" style="margin-top:8px">
+        <input type="text" id="join-code" class="s-input code-input" placeholder="ABCDE" maxlength="5">
+        <button class="big-btn sec" id="btn-join">Join</button>
+      </div>
+    </div>
+
+    <!-- Pass & Play options -->
+    <div class="s-section hidden" id="pp-opts">
+      <label class="s-label">Players (2–10)</label>
+      <div class="pp-list" id="pp-list"></div>
+      <button class="add-pp" id="btn-add-pp">+ Add Player</button>
+      <button class="big-btn" id="btn-start-pp">Start Pass &amp; Play</button>
+    </div>
+
+    <!-- Rules -->
+    <div class="s-section">
+      <div class="rules-toggle" id="rules-toggle">
+        <span>⚙ Customize Rules</span>
+        <span class="rarr">▼</span>
+      </div>
+      <div class="rules-panel hidden" id="rules-panel">
+        <div class="rule-row">
+          <span>Strict Wild +4 <small>must have no matching color</small></span>
+          <label class="tog"><input type="checkbox" id="r-strict" checked><span></span></label>
+        </div>
+        <div class="rule-row">
+          <span>Card Stacking <small>stack equal/higher draw cards</small></span>
+          <label class="tog"><input type="checkbox" id="r-stack" checked><span></span></label>
+        </div>
+        <div class="rule-row">
+          <span>Multi-Play <small>play multiple same-color/type/number cards at once</small></span>
+          <label class="tog"><input type="checkbox" id="r-multi" checked><span></span></label>
+        </div>
+        <div class="rule-row" id="mercy-row" style="display:none">
+          <span>Mercy Rule <small>25+ cards in hand = knocked out of round</small></span>
+          <label class="tog"><input type="checkbox" id="r-mercy" checked><span></span></label>
+        </div>
+        <div class="rule-row" id="sevens-row" style="display:none">
+          <span>7's Swap Hands</span>
+          <label class="tog"><input type="checkbox" id="r-sevens"><span></span></label>
+        </div>
+        <div class="rule-row" id="zeros-row" style="display:none">
+          <span>0's Pass Hands</span>
+          <label class="tog"><input type="checkbox" id="r-zeros"><span></span></label>
+        </div>
+      </div>
+    </div>
+
+    <button class="back-btn" id="back-setup" style="margin-top:8px">← Back to Menu</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     LOBBY SCREEN
+══════════════════════════════════════════════════════════ -->
+<div id="s-lobby" class="screen">
+  <div class="lobby-panel">
+    <button class="back-btn" id="l-leave">← Leave</button>
+    <div class="lobby-hdr">
+      <div class="code-display">
+        <span class="code-lbl">Room Code</span>
+        <span class="lobby-code" id="lcode">-----</span>
+        <button class="copy-btn" id="l-copy" title="Copy code">📋</button>
+      </div>
+      <div class="vbadge" id="lvbadge">Classic UNO</div>
+    </div>
+    <div class="lobby-list" id="llist"></div>
+    <div class="lobby-hint" id="l-hint">Waiting for players…</div>
+    <button class="big-btn" id="l-start" disabled>Start Game</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     GAME SCREEN
+══════════════════════════════════════════════════════════ -->
+<div id="s-game" class="screen">
+
+  <!-- 3D canvas -->
+  <div id="canvas-wrap"></div>
+  <div id="uno-world" style="display:none"></div>
+
+  <!-- HUD -->
+  <div class="hud">
+
+    <!-- Top bar -->
+    <div class="hud-top">
+      <button class="hud-btn" id="menu-btn">☰</button>
+      <div class="hud-center">
+        <span class="hud-vname" id="hud-vname">UNO</span>
+        <span class="side-badge hidden" id="side-badge">☀ LIGHT</span>
+      </div>
+      <div class="deck-info">
+        <span class="deck-count" id="deck-count">52</span>
+        <span class="deck-lbl">draw pile</span>
+      </div>
+    </div>
+
+    <!-- Opponent labels -->
+    <div class="opp-wrap" id="opp-wrap"></div>
+
+    <!-- Color orb -->
+    <div class="orb-wrap">
+      <div class="orb" id="color-orb"></div>
+      <span class="orb-lbl" id="orb-lbl">RED</span>
+    </div>
+
+    <!-- Draw stack banner -->
+    <div class="stack-banner hidden" id="stack-banner">
+      <span>⚠</span>
+      <span class="stack-txt" id="stack-txt">+0 DRAW STACK</span>
+    </div>
+
+    <!-- Status -->
+    <div class="status" id="status"></div>
+
+    <!-- Pass & Play banner (between turns) -->
+    <div class="pp-banner hidden" id="pp-banner">
+      <span class="pp-pname" id="pp-pname">Player 1</span>
+      <span class="pp-hint">Hand the device to this player</span>
+      <button class="big-btn" id="pp-ready" style="max-width:260px">I'm Ready — Show My Cards</button>
+    </div>
+
+    <!-- Pass & Play cover (while handing device) -->
+    <div class="pp-cover hidden" id="pp-cover">
+      <span class="pp-cover-txt">PASS THE DEVICE</span>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="actions" id="hud-actions">
+      <button class="act-btn draw-btn" id="draw-btn" style="display:none">
+        <span>🂠</span><span>Draw</span>
+      </button>
+      <button class="act-btn uno-btn" id="uno-btn" style="display:none">🃏 UNO!</button>
+      <button class="act-btn catch-btn" id="catch-btn" style="display:none">😱 Catch!</button>
+      <button class="act-btn chal-btn" id="chal-btn" style="display:none">⚔ Challenge +4</button>
+      <button class="act-btn multi-btn hidden" id="multi-btn">▶ Play cards</button>
+    </div>
+
+    <!-- Hand -->
+    <div class="hand-area" id="hand-area">
+      <div class="hand-scroll" id="hand-scroll"></div>
+    </div>
+
+    <!-- Chat -->
+    <div class="chat-panel">
+      <div class="chat-body" id="chat-body">
+        <div class="chat-msgs" id="chat-msgs"></div>
+        <div class="chat-in">
+          <input type="text" id="chat-in" placeholder="Say something…" maxlength="120">
+          <button id="chat-send">➤</button>
+        </div>
+      </div>
+      <div class="chat-tog" id="chat-tog">💬</div>
+    </div>
+
+  </div><!-- /hud -->
+
+  <!-- ── MODALS ──────────────────────────────────────────── -->
+
+  <!-- Color picker -->
+  <div class="overlay hidden" id="color-modal">
+    <div class="mbox" style="min-width:320px">
+      <div class="mtitle" id="color-modal-title">Choose a Color</div>
+      <div class="color-grid" id="color-grid"></div>
+    </div>
+  </div>
+
+  <!-- Swap picker -->
+  <div class="overlay hidden" id="swap-modal">
+    <div class="mbox">
+      <div class="mtitle">Swap Hands With…</div>
+      <div class="swap-list" id="swap-list"></div>
+    </div>
+  </div>
+
+  <!-- Roulette (same structure as color, opened programmatically) -->
+  <div class="overlay hidden" id="roulette-modal">
+    <div class="mbox" style="min-width:320px">
+      <div class="mtitle">🎰 Wild Color Roulette<small>Pick a color — you'll draw until you get it!</small></div>
+      <div class="color-grid" id="roulette-grid"></div>
+    </div>
+  </div>
+
+  <!-- Challenge confirm -->
+  <div class="overlay hidden" id="chal-modal">
+    <div class="mbox">
+      <div class="mtitle">⚔ Challenge Wild +4?</div>
+      <div class="mdesc">If they had a matching color card, they draw instead.<br>If innocent, you draw the full penalty +2 extra cards.</div>
+      <div class="mbtns">
+        <button class="mbtn yes" id="chal-yes">Challenge!</button>
+        <button class="mbtn" id="chal-no">Back Down</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Round end -->
+  <div class="overlay hidden" id="round-end-modal">
+    <div class="mbox" style="align-items:center;text-align:center">
+      <div style="font-size:56px">🎉</div>
+      <div class="mtitle" id="rend-title">Someone wins!</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:34px;color:#ffa502;letter-spacing:2px" id="rend-pts">+0 points</div>
+      <div id="generic-board" class="generic-board"></div>
+      <button class="big-btn" id="rend-next">Next Round</button>
+    </div>
+  </div>
+
+  <!-- Game end -->
+  <div class="overlay hidden" id="game-end-modal">
+    <div class="mbox" style="align-items:center;text-align:center">
+      <div style="font-size:72px">🏆</div>
+      <div class="mtitle" id="gend-title">Champion!</div>
+      <div class="final-list" id="final-list"></div>
+      <div class="mbtns" style="margin-top:4px">
+        <button class="big-btn" id="gend-rematch">Play Again</button>
+        <button class="big-btn sec" id="gend-menu">Main Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu -->
+  <div class="overlay hidden" id="menu-modal">
+    <div class="mbox">
+      <div class="mtitle">Menu</div>
+      <div class="mbtns" style="flex-direction:column">
+        <button class="mbtn" id="menu-rules">📖 How to Play</button>
+        <button class="mbtn danger" id="menu-leave">Leave Game</button>
+        <button class="mbtn" id="menu-close">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rules -->
+  <div class="overlay hidden" id="rules-modal">
+    <div class="mbox" style="max-width:560px;max-height:80vh">
+      <div class="mtitle">How to Play</div>
+      <div class="rules-body" id="rules-body"></div>
+      <button class="mbtn" id="rules-close">Close</button>
+    </div>
+  </div>
+
+</div><!-- /s-game -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/cardRenderer.js"></script>
+<script src="/js/scene3d.js"></script>
+<script src="/js/uno-board.js"></script>
+<script src="/js/app.js"></script>
+</body>
+</html>

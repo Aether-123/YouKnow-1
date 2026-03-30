@@ -1,0 +1,58 @@
+{
+  "decks": [
+    {
+      "deck_key": "classic_original_108",
+      "deck_title": "Classic UNO (Original 108)",
+      "physical_card_count": 108,
+      "front_count": 108,
+      "back_count": 0,
+      "manifest": "generated\\manifests\\classic_original_108.json",
+      "cards_dir": "generated\\cards\\classic_original_108"
+    },
+    {
+      "deck_key": "classic_modern_swap_112",
+      "deck_title": "Classic UNO (Modern 112 - Swap Hands)",
+      "physical_card_count": 112,
+      "front_count": 112,
+      "back_count": 0,
+      "manifest": "generated\\manifests\\classic_modern_swap_112.json",
+      "cards_dir": "generated\\cards\\classic_modern_swap_112"
+    },
+    {
+      "deck_key": "classic_modern_shuffle_112",
+      "deck_title": "Classic UNO (Modern 112 - Shuffle Hands)",
+      "physical_card_count": 112,
+      "front_count": 112,
+      "back_count": 0,
+      "manifest": "generated\\manifests\\classic_modern_shuffle_112.json",
+      "cards_dir": "generated\\cards\\classic_modern_shuffle_112"
+    },
+    {
+      "deck_key": "harry_potter_112",
+      "deck_title": "UNO Harry Potter (T8231)",
+      "physical_card_count": 112,
+      "front_count": 112,
+      "back_count": 0,
+      "manifest": "generated\\manifests\\harry_potter_112.json",
+      "cards_dir": "generated\\cards\\harry_potter_112"
+    },
+    {
+      "deck_key": "flip_112",
+      "deck_title": "UNO Flip (GDR44)",
+      "physical_card_count": 112,
+      "front_count": 112,
+      "back_count": 112,
+      "manifest": "generated\\manifests\\flip_112.json",
+      "cards_dir": "generated\\cards\\flip_112"
+    },
+    {
+      "deck_key": "show_em_no_mercy_168",
+      "deck_title": "UNO Show 'Em No Mercy (HVW18)",
+      "physical_card_count": 168,
+      "front_count": 168,
+      "back_count": 0,
+      "manifest": "generated\\manifests\\show_em_no_mercy_168.json",
+      "cards_dir": "generated\\cards\\show_em_no_mercy_168"
+    }
+  ]
+}

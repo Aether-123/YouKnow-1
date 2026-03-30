@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350" width="250" height="350">
+  <defs>
+    <clipPath id="cc-wild-draw4"><rect x="0" y="0" width="250" height="350" rx="18" ry="18"/></clipPath>
+    <!-- Oval clip for colour quarters -->
+    <clipPath id="ov-clip-wild-draw4">
+      <ellipse cx="125" cy="137" rx="84" ry="106"
+               transform="rotate(-20,125,137)"/>
+    </clipPath>
+    <radialGradient id="dark-centre-wild-draw4" cx="50%" cy="45%" r="60%">
+      <stop offset="0%"   stop-color="#252535"/>
+      <stop offset="100%" stop-color="#0A0A18"/>
+    </radialGradient>
+    <linearGradient id="shine-wild-draw4" x1="0%" y1="0%" x2="55%" y2="100%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.18"/>
+      <stop offset="55%"  stop-color="#FFFFFF" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="brd-wild-draw4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.12"/>
+    </linearGradient>
+    <radialGradient id="bg-dark-wild-draw4" cx="40%" cy="35%" r="75%">
+      <stop offset="0%"   stop-color="#1C2636"/>
+      <stop offset="100%" stop-color="#080C14"/>
+    </radialGradient>
+    <filter id="dropshadow-wild-draw4" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.55"/>
+    </filter>
+    <filter id="txtshadow-wild-draw4">
+      <feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.70"/>
+    </filter>
+    <filter id="glowfilter-wild-draw4" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g clip-path="url(#cc-wild-draw4)">
+    <rect x="0" y="0" width="250" height="350" fill="url(#bg-dark-wild-draw4)"/>
+    <ellipse cx="125" cy="175" rx="115" ry="152" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.06"/>
+    <circle cx="12"   cy="12"   r="3" fill="#FFFFFF" opacity="0.18"/>
+    <circle cx="238" cy="12"   r="3" fill="#FFFFFF" opacity="0.18"/>
+    <circle cx="12"   cy="338" r="3" fill="#FFFFFF" opacity="0.18"/>
+    <circle cx="238" cy="338" r="3" fill="#FFFFFF" opacity="0.18"/>
+
+    <!-- Four colour quarters, clipped to oval shape -->
+    <g clip-path="url(#ov-clip-wild-draw4)">
+      <!-- Top-left: red -->
+      <rect x="37" y="27" width="90" height="112" fill="#CC2222"/>
+      <!-- Top-right: blue -->
+      <rect x="125" y="27" width="90" height="112" fill="#1551A8"/>
+      <!-- Bottom-left: yellow -->
+      <rect x="37" y="137" width="90" height="112" fill="#E8A000"/>
+      <!-- Bottom-right: green -->
+      <rect x="125" y="137" width="90" height="112" fill="#1A7A2E"/>
+      <!-- Thin cross-hair dividers -->
+      <line x1="125" y1="27" x2="125" y2="247"
+            stroke="#0A0A18" stroke-width="2.5"/>
+      <line x1="37" y1="137" x2="213" y2="137"
+            stroke="#0A0A18" stroke-width="2.5"/>
+    </g>
+    <!-- Oval border -->
+    <ellipse cx="125" cy="137" rx="84" ry="106"
+             fill="none" stroke="#FFFFFF" stroke-width="3" stroke-opacity="0.30"
+             transform="rotate(-20,125,137)"/>
+    <ellipse cx="125" cy="137" rx="79" ry="101"
+             fill="none" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.10"
+             transform="rotate(-20,125,137)"/>
+    <!-- Dark centre circle -->
+    <ellipse cx="125" cy="137" rx="52" ry="66"
+             fill="url(#dark-centre-wild-draw4)" filter="url(#dropshadow-wild-draw4)"/>
+    <ellipse cx="125" cy="137" rx="52" ry="66"
+             fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.22"/>
+    <!-- Centre label -->
+    <text x="125" y="148"
+          font-family="'Arial Black',Arial,sans-serif" font-size="28" font-weight="900"
+          fill="#FFFFFF" text-anchor="middle" letter-spacing="2"
+          filter="url(#glowfilter-wild-draw4)">WILD</text>
+
+    <!-- Mini card 1 (#CC2222) -->
+    <g transform="rotate(-22,77,300)">
+      <rect x="54" y="269" width="46" height="62" rx="7" ry="7"
+            fill="#CC2222" stroke="#FFFFFF" stroke-width="2.2"
+            filter="url(#dropshadow-wild-draw4)"/>
+      <rect x="57" y="272" width="40" height="56" rx="5" ry="5"
+            fill="none" stroke="#FFFFFF" stroke-width="0.8" stroke-opacity="0.35"/>
+      <text x="77" y="309.4" font-family="'Arial Black',Arial,sans-serif"
+            font-size="26" font-weight="900" fill="#FFFFFF" text-anchor="middle">4</text>
+      <text x="59" y="284.0" font-family="'Arial Black',Arial,sans-serif"
+            font-size="11" font-weight="900" fill="#FFFFFF">4</text>
+    </g>
+    <!-- Mini card 2 (#1551A8) -->
+    <g transform="rotate(-7,109,294)">
+      <rect x="86" y="263" width="46" height="62" rx="7" ry="7"
+            fill="#1551A8" stroke="#FFFFFF" stroke-width="2.2"
+            filter="url(#dropshadow-wild-draw4)"/>
+      <rect x="89" y="266" width="40" height="56" rx="5" ry="5"
+            fill="none" stroke="#FFFFFF" stroke-width="0.8" stroke-opacity="0.35"/>
+      <text x="109" y="303.4" font-family="'Arial Black',Arial,sans-serif"
+            font-size="26" font-weight="900" fill="#FFFFFF" text-anchor="middle">4</text>
+      <text x="91" y="278.0" font-family="'Arial Black',Arial,sans-serif"
+            font-size="11" font-weight="900" fill="#FFFFFF">4</text>
+    </g>
+    <!-- Mini card 3 (#E8A000) -->
+    <g transform="rotate(8,141,294)">
+      <rect x="118" y="263" width="46" height="62" rx="7" ry="7"
+            fill="#E8A000" stroke="#FFFFFF" stroke-width="2.2"
+            filter="url(#dropshadow-wild-draw4)"/>
+      <rect x="121" y="266" width="40" height="56" rx="5" ry="5"
+            fill="none" stroke="#FFFFFF" stroke-width="0.8" stroke-opacity="0.35"/>
+      <text x="141" y="303.4" font-family="'Arial Black',Arial,sans-serif"
+            font-size="26" font-weight="900" fill="#1A1000" text-anchor="middle">4</text>
+      <text x="123" y="278.0" font-family="'Arial Black',Arial,sans-serif"
+            font-size="11" font-weight="900" fill="#1A1000">4</text>
+    </g>
+    <!-- Mini card 4 (#1A7A2E) -->
+    <g transform="rotate(23,173,300)">
+      <rect x="150" y="269" width="46" height="62" rx="7" ry="7"
+            fill="#1A7A2E" stroke="#FFFFFF" stroke-width="2.2"
+            filter="url(#dropshadow-wild-draw4)"/>
+      <rect x="153" y="272" width="40" height="56" rx="5" ry="5"
+            fill="none" stroke="#FFFFFF" stroke-width="0.8" stroke-opacity="0.35"/>
+      <text x="173" y="309.4" font-family="'Arial Black',Arial,sans-serif"
+            font-size="26" font-weight="900" fill="#FFFFFF" text-anchor="middle">4</text>
+      <text x="155" y="284.0" font-family="'Arial Black',Arial,sans-serif"
+            font-size="11" font-weight="900" fill="#FFFFFF">4</text>
+    </g>
+    <!-- DRAW FOUR label -->
+    <text x="125" y="340" font-family="'Arial Black',Arial,sans-serif"
+          font-size="13" font-weight="900" fill="#FFFFFF" text-anchor="middle"
+          filter="url(#txtshadow-wild-draw4)" letter-spacing="1">DRAW FOUR</text>
+    <!-- Sparkle stars -->
+    <text x="28"    y="44"    font-size="12" fill="#FFD700" opacity="0.75" text-anchor="middle">✦</text>
+    <text x="222" y="44"   font-size="12" fill="#FFD700" opacity="0.75" text-anchor="middle">✦</text>
+    <!-- Corner +4 labels -->
+    <text x="15" y="48" font-family="'Arial Black',Arial,sans-serif" font-size="27" font-weight="900"
+          fill="#FFFFFF" filter="url(#txtshadow-wild-draw4)">+4</text>
+    <text x="235" y="338" font-family="'Arial Black',Arial,sans-serif" font-size="27" font-weight="900"
+          fill="#FFFFFF" text-anchor="end" filter="url(#txtshadow-wild-draw4)"
+          transform="rotate(180,125,175)">+4</text>
+    <rect x="0" y="0" width="250" height="350" fill="url(#shine-wild-draw4)"/>
+  </g>
+  <rect x="1.5" y="1.5" width="247" height="347" rx="17" ry="17" fill="none" stroke="url(#brd-wild-draw4)" stroke-width="2.5"/>
+  <rect x="0"   y="0"   width="250"   height="350"   rx="18"   ry="18"   fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.28"/>
+</svg>

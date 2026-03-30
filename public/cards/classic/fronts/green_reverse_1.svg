@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350" width="250" height="350">
+  <defs>
+    <clipPath id="cc-green-reverse"><rect x="0" y="0" width="250" height="350" rx="18" ry="18"/></clipPath>
+
+    <radialGradient id="bg-green-reverse" cx="35%" cy="28%" r="80%">
+      <stop offset="0%"   stop-color="#4CAF50"/>
+      <stop offset="50%"  stop-color="#1A7A2E"/>
+      <stop offset="100%" stop-color="#0F4A1A"/>
+    </radialGradient>
+
+    <radialGradient id="ov-green-reverse" cx="38%" cy="32%" r="70%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#E8E8E8" stop-opacity="0.92"/>
+    </radialGradient>
+
+    <linearGradient id="shine-green-reverse" x1="0%" y1="0%" x2="55%" y2="100%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.20"/>
+      <stop offset="50%"  stop-color="#FFFFFF" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="brd-green-reverse" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.60"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.10"/>
+    </linearGradient>
+
+    <filter id="dropshadow-green-reverse" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#062a0b" flood-opacity="0.60"/>
+    </filter>
+    <filter id="txtshadow-green-reverse">
+      <feDropShadow dx="1" dy="1.5" stdDeviation="1.5" flood-color="#062a0b" flood-opacity="0.70"/>
+    </filter>
+    <filter id="symglow-green-reverse" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g clip-path="url(#cc-green-reverse)">
+    <rect x="0" y="0" width="250" height="350" fill="url(#bg-green-reverse)"/>
+    <!-- Decorative background ovals -->
+    <ellipse cx="125" cy="175" rx="112" ry="155" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.10"/>
+    <ellipse cx="125" cy="175" rx="88"  ry="122" fill="none" stroke="#FFFFFF" stroke-width="0.7" stroke-opacity="0.07"/>
+    <!-- Corner accent dots -->
+    <circle cx="12"   cy="12"   r="3" fill="#FFFFFF" opacity="0.18"/>
+    <circle cx="238" cy="12"   r="3" fill="#FFFFFF" opacity="0.18"/>
+    <circle cx="12"   cy="338" r="3" fill="#FFFFFF" opacity="0.18"/>
+    <circle cx="238" cy="338" r="3" fill="#FFFFFF" opacity="0.18"/>
+
+    <!-- Centre white oval -->
+    <ellipse cx="125" cy="175" rx="86" ry="114" fill="url(#ov-green-reverse)"
+             transform="rotate(-20,125,175)" filter="url(#dropshadow-green-reverse)"/>
+    <ellipse cx="125" cy="175" rx="86" ry="114" fill="none" stroke="#CCCCCC" stroke-width="1"
+             transform="rotate(-20,125,175)"/>
+    <!-- REVERSE symbol: two opposing circular arrows -->
+
+    <!-- Shadow layer for depth -->
+    <g filter="url(#dropshadow-green-reverse)">
+      <!-- Upper arc shadow -->
+      <path d="M 79.89,150.58 A 48,48 0 0,1 170.11,150.58" fill="none" stroke="#1A7A2E" stroke-width="15" stroke-linecap="round"/>
+      <!-- Lower arc shadow -->
+      <path d="M 170.11,183.42 A 48,48 0 0,1 79.89,183.42" fill="none" stroke="#1A7A2E" stroke-width="15" stroke-linecap="round"/>
+    </g>
+
+    <!-- Upper arc (card colour, thick) -->
+    <path d="M 79.89,150.58 A 48,48 0 0,1 170.11,150.58" fill="none" stroke="#1A7A2E" stroke-width="13" stroke-linecap="round"/>
+    <!-- Upper arc white highlight -->
+    <path d="M 79.89,150.58 A 48,48 0 0,1 170.11,150.58" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.28"/>
+    <!-- Upper arrowhead -->
+    <polygon points="170.11,150.58 158.61,140.94 172.71,135.81" fill="#1A7A2E"/>
+    <polygon points="170.11,150.58 158.61,140.94 172.71,135.81" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.30"/>
+
+    <!-- Lower arc (card colour, thick) -->
+    <path d="M 170.11,183.42 A 48,48 0 0,1 79.89,183.42" fill="none" stroke="#1A7A2E" stroke-width="13" stroke-linecap="round"/>
+    <!-- Lower arc white highlight -->
+    <path d="M 170.11,183.42 A 48,48 0 0,1 79.89,183.42" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-opacity="0.28"/>
+    <!-- Lower arrowhead -->
+    <polygon points="79.89,183.42 91.39,193.06 77.29,198.19" fill="#1A7A2E"/>
+    <polygon points="79.89,183.42 91.39,193.06 77.29,198.19" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.30"/>
+
+    <text x="125" y="271" font-family="'Arial Black',Arial,sans-serif"
+          font-size="15" font-weight="900" fill="#FFFFFF" text-anchor="middle"
+          filter="url(#txtshadow-green-reverse)" letter-spacing="1">REVERSE</text>
+    <!-- Corner labels -->
+    <text x="15" y="48" font-family="'Arial Black',Arial,sans-serif" font-size="30" font-weight="900"
+          fill="#FFFFFF" filter="url(#txtshadow-green-reverse)">↺</text>
+    <text x="235" y="338" font-family="'Arial Black',Arial,sans-serif" font-size="30" font-weight="900"
+          fill="#FFFFFF" text-anchor="end" filter="url(#txtshadow-green-reverse)"
+          transform="rotate(180,125,175)">↺</text>
+    <rect x="0" y="0" width="250" height="350" fill="url(#shine-green-reverse)"/>
+  </g>
+  <rect x="1.5" y="1.5" width="247" height="347" rx="17" ry="17" fill="none" stroke="url(#brd-green-reverse)" stroke-width="2.5"/>
+  <rect x="0"   y="0"   width="250"   height="350"   rx="18"   ry="18"   fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.28"/>
+</svg>

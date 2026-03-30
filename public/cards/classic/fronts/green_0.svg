@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350" width="250" height="350">
+  <defs>
+    <clipPath id="cc-green-0"><rect x="0" y="0" width="250" height="350" rx="18" ry="18"/></clipPath>
+
+    <radialGradient id="bg-green-0" cx="35%" cy="28%" r="80%">
+      <stop offset="0%"   stop-color="#4CAF50"/>
+      <stop offset="50%"  stop-color="#1A7A2E"/>
+      <stop offset="100%" stop-color="#0F4A1A"/>
+    </radialGradient>
+
+    <radialGradient id="ov-green-0" cx="38%" cy="32%" r="70%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#E8E8E8" stop-opacity="0.92"/>
+    </radialGradient>
+
+    <linearGradient id="shine-green-0" x1="0%" y1="0%" x2="55%" y2="100%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.20"/>
+      <stop offset="50%"  stop-color="#FFFFFF" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="brd-green-0" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.60"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.10"/>
+    </linearGradient>
+
+    <filter id="dropshadow-green-0" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#062a0b" flood-opacity="0.60"/>
+    </filter>
+    <filter id="txtshadow-green-0">
+      <feDropShadow dx="1" dy="1.5" stdDeviation="1.5" flood-color="#062a0b" flood-opacity="0.70"/>
+    </filter>
+    <filter id="symglow-green-0" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g clip-path="url(#cc-green-0)">
+    <rect x="0" y="0" width="250" height="350" fill="url(#bg-green-0)"/>
+    <!-- Decorative background ovals -->
+    <ellipse cx="125" cy="175" rx="112" ry="155" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.10"/>
+    <ellipse cx="125" cy="175" rx="88"  ry="122" fill="none" stroke="#FFFFFF" stroke-width="0.7" stroke-opacity="0.07"/>
+    <!-- Corner accent dots -->
+    <circle cx="12"   cy="12"   r="3" fill="#FFFFFF" opacity="0.18"/>
+    <circle cx="238" cy="12"   r="3" fill="#FFFFFF" opacity="0.18"/>
+    <circle cx="12"   cy="338" r="3" fill="#FFFFFF" opacity="0.18"/>
+    <circle cx="238" cy="338" r="3" fill="#FFFFFF" opacity="0.18"/>
+
+    <!-- Centre white oval -->
+    <ellipse cx="125" cy="175" rx="86" ry="114" fill="url(#ov-green-0)"
+             transform="rotate(-20,125,175)" filter="url(#dropshadow-green-0)"/>
+    <ellipse cx="125" cy="175" rx="86" ry="114" fill="none" stroke="#CCCCCC" stroke-width="1"
+             transform="rotate(-20,125,175)"/>
+    <!-- Big number -->
+    <text x="125" y="219" font-family="'Arial Black',Arial,sans-serif"
+          font-size="116" font-weight="900" fill="#1A7A2E" text-anchor="middle"
+          filter="url(#symglow-green-0)">0</text>
+    <!-- Subtle highlight -->
+    <text x="123" y="216" font-family="'Arial Black',Arial,sans-serif"
+          font-size="116" font-weight="900" fill="#FFFFFF" text-anchor="middle" opacity="0.14">0</text>
+    <!-- Corner labels -->
+    <text x="15" y="48" font-family="'Arial Black',Arial,sans-serif" font-size="30" font-weight="900"
+          fill="#FFFFFF" filter="url(#txtshadow-green-0)">0</text>
+    <text x="235" y="338" font-family="'Arial Black',Arial,sans-serif" font-size="30" font-weight="900"
+          fill="#FFFFFF" text-anchor="end" filter="url(#txtshadow-green-0)"
+          transform="rotate(180,125,175)">0</text>
+    <rect x="0" y="0" width="250" height="350" fill="url(#shine-green-0)"/>
+  </g>
+  <rect x="1.5" y="1.5" width="247" height="347" rx="17" ry="17" fill="none" stroke="url(#brd-green-0)" stroke-width="2.5"/>
+  <rect x="0"   y="0"   width="250"   height="350"   rx="18"   ry="18"   fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.28"/>
+</svg>

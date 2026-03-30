@@ -1,0 +1,1416 @@
+{
+  "deck_key": "classic_original_108",
+  "deck_title": "Classic UNO (Original 108)",
+  "theme": "classic",
+  "physical_card_count": 108,
+  "notes": [
+    "Classic original uses the standard 108-card deck.",
+    "Modern classic decks add 3 Wild Customizable cards plus either Wild Swap Hands or Wild Shuffle Hands."
+  ],
+  "cards": [
+    {
+      "id": "classic_original_108_001",
+      "title": "red 0",
+      "front": {
+        "slug": "red_red_0_01",
+        "title": "red 0",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_002",
+      "title": "red 1",
+      "front": {
+        "slug": "red_red_1_01",
+        "title": "red 1",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_003",
+      "title": "red 1",
+      "front": {
+        "slug": "red_red_1_02",
+        "title": "red 1",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_004",
+      "title": "red 2",
+      "front": {
+        "slug": "red_red_2_01",
+        "title": "red 2",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_005",
+      "title": "red 2",
+      "front": {
+        "slug": "red_red_2_02",
+        "title": "red 2",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_006",
+      "title": "red 3",
+      "front": {
+        "slug": "red_red_3_01",
+        "title": "red 3",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_007",
+      "title": "red 3",
+      "front": {
+        "slug": "red_red_3_02",
+        "title": "red 3",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_008",
+      "title": "red 4",
+      "front": {
+        "slug": "red_red_4_01",
+        "title": "red 4",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_009",
+      "title": "red 4",
+      "front": {
+        "slug": "red_red_4_02",
+        "title": "red 4",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_010",
+      "title": "red 5",
+      "front": {
+        "slug": "red_red_5_01",
+        "title": "red 5",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_011",
+      "title": "red 5",
+      "front": {
+        "slug": "red_red_5_02",
+        "title": "red 5",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_012",
+      "title": "red 6",
+      "front": {
+        "slug": "red_red_6_01",
+        "title": "red 6",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_013",
+      "title": "red 6",
+      "front": {
+        "slug": "red_red_6_02",
+        "title": "red 6",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_014",
+      "title": "red 7",
+      "front": {
+        "slug": "red_red_7_01",
+        "title": "red 7",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_015",
+      "title": "red 7",
+      "front": {
+        "slug": "red_red_7_02",
+        "title": "red 7",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_016",
+      "title": "red 8",
+      "front": {
+        "slug": "red_red_8_01",
+        "title": "red 8",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_017",
+      "title": "red 8",
+      "front": {
+        "slug": "red_red_8_02",
+        "title": "red 8",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_018",
+      "title": "red 9",
+      "front": {
+        "slug": "red_red_9_01",
+        "title": "red 9",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_019",
+      "title": "red 9",
+      "front": {
+        "slug": "red_red_9_02",
+        "title": "red 9",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_020",
+      "title": "red Skip",
+      "front": {
+        "slug": "red_red_skip_01",
+        "title": "red Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_021",
+      "title": "red Skip",
+      "front": {
+        "slug": "red_red_skip_02",
+        "title": "red Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_022",
+      "title": "red Reverse",
+      "front": {
+        "slug": "red_red_reverse_01",
+        "title": "red Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_023",
+      "title": "red Reverse",
+      "front": {
+        "slug": "red_red_reverse_02",
+        "title": "red Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_024",
+      "title": "red Draw Two",
+      "front": {
+        "slug": "red_red_draw_two_01",
+        "title": "red Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_025",
+      "title": "red Draw Two",
+      "front": {
+        "slug": "red_red_draw_two_02",
+        "title": "red Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_026",
+      "title": "yellow 0",
+      "front": {
+        "slug": "yellow_yellow_0_01",
+        "title": "yellow 0",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_027",
+      "title": "yellow 1",
+      "front": {
+        "slug": "yellow_yellow_1_01",
+        "title": "yellow 1",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_028",
+      "title": "yellow 1",
+      "front": {
+        "slug": "yellow_yellow_1_02",
+        "title": "yellow 1",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_029",
+      "title": "yellow 2",
+      "front": {
+        "slug": "yellow_yellow_2_01",
+        "title": "yellow 2",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_030",
+      "title": "yellow 2",
+      "front": {
+        "slug": "yellow_yellow_2_02",
+        "title": "yellow 2",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_031",
+      "title": "yellow 3",
+      "front": {
+        "slug": "yellow_yellow_3_01",
+        "title": "yellow 3",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_032",
+      "title": "yellow 3",
+      "front": {
+        "slug": "yellow_yellow_3_02",
+        "title": "yellow 3",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_033",
+      "title": "yellow 4",
+      "front": {
+        "slug": "yellow_yellow_4_01",
+        "title": "yellow 4",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_034",
+      "title": "yellow 4",
+      "front": {
+        "slug": "yellow_yellow_4_02",
+        "title": "yellow 4",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_035",
+      "title": "yellow 5",
+      "front": {
+        "slug": "yellow_yellow_5_01",
+        "title": "yellow 5",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_036",
+      "title": "yellow 5",
+      "front": {
+        "slug": "yellow_yellow_5_02",
+        "title": "yellow 5",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_037",
+      "title": "yellow 6",
+      "front": {
+        "slug": "yellow_yellow_6_01",
+        "title": "yellow 6",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_038",
+      "title": "yellow 6",
+      "front": {
+        "slug": "yellow_yellow_6_02",
+        "title": "yellow 6",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_039",
+      "title": "yellow 7",
+      "front": {
+        "slug": "yellow_yellow_7_01",
+        "title": "yellow 7",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_040",
+      "title": "yellow 7",
+      "front": {
+        "slug": "yellow_yellow_7_02",
+        "title": "yellow 7",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_041",
+      "title": "yellow 8",
+      "front": {
+        "slug": "yellow_yellow_8_01",
+        "title": "yellow 8",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_042",
+      "title": "yellow 8",
+      "front": {
+        "slug": "yellow_yellow_8_02",
+        "title": "yellow 8",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_043",
+      "title": "yellow 9",
+      "front": {
+        "slug": "yellow_yellow_9_01",
+        "title": "yellow 9",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_044",
+      "title": "yellow 9",
+      "front": {
+        "slug": "yellow_yellow_9_02",
+        "title": "yellow 9",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_045",
+      "title": "yellow Skip",
+      "front": {
+        "slug": "yellow_yellow_skip_01",
+        "title": "yellow Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_046",
+      "title": "yellow Skip",
+      "front": {
+        "slug": "yellow_yellow_skip_02",
+        "title": "yellow Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_047",
+      "title": "yellow Reverse",
+      "front": {
+        "slug": "yellow_yellow_reverse_01",
+        "title": "yellow Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_048",
+      "title": "yellow Reverse",
+      "front": {
+        "slug": "yellow_yellow_reverse_02",
+        "title": "yellow Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_049",
+      "title": "yellow Draw Two",
+      "front": {
+        "slug": "yellow_yellow_draw_two_01",
+        "title": "yellow Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_050",
+      "title": "yellow Draw Two",
+      "front": {
+        "slug": "yellow_yellow_draw_two_02",
+        "title": "yellow Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_051",
+      "title": "green 0",
+      "front": {
+        "slug": "green_green_0_01",
+        "title": "green 0",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_052",
+      "title": "green 1",
+      "front": {
+        "slug": "green_green_1_01",
+        "title": "green 1",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_053",
+      "title": "green 1",
+      "front": {
+        "slug": "green_green_1_02",
+        "title": "green 1",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_054",
+      "title": "green 2",
+      "front": {
+        "slug": "green_green_2_01",
+        "title": "green 2",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_055",
+      "title": "green 2",
+      "front": {
+        "slug": "green_green_2_02",
+        "title": "green 2",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_056",
+      "title": "green 3",
+      "front": {
+        "slug": "green_green_3_01",
+        "title": "green 3",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_057",
+      "title": "green 3",
+      "front": {
+        "slug": "green_green_3_02",
+        "title": "green 3",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_058",
+      "title": "green 4",
+      "front": {
+        "slug": "green_green_4_01",
+        "title": "green 4",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_059",
+      "title": "green 4",
+      "front": {
+        "slug": "green_green_4_02",
+        "title": "green 4",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_060",
+      "title": "green 5",
+      "front": {
+        "slug": "green_green_5_01",
+        "title": "green 5",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_061",
+      "title": "green 5",
+      "front": {
+        "slug": "green_green_5_02",
+        "title": "green 5",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_062",
+      "title": "green 6",
+      "front": {
+        "slug": "green_green_6_01",
+        "title": "green 6",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_063",
+      "title": "green 6",
+      "front": {
+        "slug": "green_green_6_02",
+        "title": "green 6",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_064",
+      "title": "green 7",
+      "front": {
+        "slug": "green_green_7_01",
+        "title": "green 7",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_065",
+      "title": "green 7",
+      "front": {
+        "slug": "green_green_7_02",
+        "title": "green 7",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_066",
+      "title": "green 8",
+      "front": {
+        "slug": "green_green_8_01",
+        "title": "green 8",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_067",
+      "title": "green 8",
+      "front": {
+        "slug": "green_green_8_02",
+        "title": "green 8",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_068",
+      "title": "green 9",
+      "front": {
+        "slug": "green_green_9_01",
+        "title": "green 9",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_069",
+      "title": "green 9",
+      "front": {
+        "slug": "green_green_9_02",
+        "title": "green 9",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_070",
+      "title": "green Skip",
+      "front": {
+        "slug": "green_green_skip_01",
+        "title": "green Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_071",
+      "title": "green Skip",
+      "front": {
+        "slug": "green_green_skip_02",
+        "title": "green Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_072",
+      "title": "green Reverse",
+      "front": {
+        "slug": "green_green_reverse_01",
+        "title": "green Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_073",
+      "title": "green Reverse",
+      "front": {
+        "slug": "green_green_reverse_02",
+        "title": "green Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_074",
+      "title": "green Draw Two",
+      "front": {
+        "slug": "green_green_draw_two_01",
+        "title": "green Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_075",
+      "title": "green Draw Two",
+      "front": {
+        "slug": "green_green_draw_two_02",
+        "title": "green Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_076",
+      "title": "blue 0",
+      "front": {
+        "slug": "blue_blue_0_01",
+        "title": "blue 0",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_077",
+      "title": "blue 1",
+      "front": {
+        "slug": "blue_blue_1_01",
+        "title": "blue 1",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_078",
+      "title": "blue 1",
+      "front": {
+        "slug": "blue_blue_1_02",
+        "title": "blue 1",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_079",
+      "title": "blue 2",
+      "front": {
+        "slug": "blue_blue_2_01",
+        "title": "blue 2",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_080",
+      "title": "blue 2",
+      "front": {
+        "slug": "blue_blue_2_02",
+        "title": "blue 2",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_081",
+      "title": "blue 3",
+      "front": {
+        "slug": "blue_blue_3_01",
+        "title": "blue 3",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_082",
+      "title": "blue 3",
+      "front": {
+        "slug": "blue_blue_3_02",
+        "title": "blue 3",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_083",
+      "title": "blue 4",
+      "front": {
+        "slug": "blue_blue_4_01",
+        "title": "blue 4",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_084",
+      "title": "blue 4",
+      "front": {
+        "slug": "blue_blue_4_02",
+        "title": "blue 4",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_085",
+      "title": "blue 5",
+      "front": {
+        "slug": "blue_blue_5_01",
+        "title": "blue 5",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_086",
+      "title": "blue 5",
+      "front": {
+        "slug": "blue_blue_5_02",
+        "title": "blue 5",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_087",
+      "title": "blue 6",
+      "front": {
+        "slug": "blue_blue_6_01",
+        "title": "blue 6",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_088",
+      "title": "blue 6",
+      "front": {
+        "slug": "blue_blue_6_02",
+        "title": "blue 6",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_089",
+      "title": "blue 7",
+      "front": {
+        "slug": "blue_blue_7_01",
+        "title": "blue 7",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_090",
+      "title": "blue 7",
+      "front": {
+        "slug": "blue_blue_7_02",
+        "title": "blue 7",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_091",
+      "title": "blue 8",
+      "front": {
+        "slug": "blue_blue_8_01",
+        "title": "blue 8",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_092",
+      "title": "blue 8",
+      "front": {
+        "slug": "blue_blue_8_02",
+        "title": "blue 8",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_093",
+      "title": "blue 9",
+      "front": {
+        "slug": "blue_blue_9_01",
+        "title": "blue 9",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_094",
+      "title": "blue 9",
+      "front": {
+        "slug": "blue_blue_9_02",
+        "title": "blue 9",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_095",
+      "title": "blue Skip",
+      "front": {
+        "slug": "blue_blue_skip_01",
+        "title": "blue Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_096",
+      "title": "blue Skip",
+      "front": {
+        "slug": "blue_blue_skip_02",
+        "title": "blue Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_097",
+      "title": "blue Reverse",
+      "front": {
+        "slug": "blue_blue_reverse_01",
+        "title": "blue Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_098",
+      "title": "blue Reverse",
+      "front": {
+        "slug": "blue_blue_reverse_02",
+        "title": "blue Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_099",
+      "title": "blue Draw Two",
+      "front": {
+        "slug": "blue_blue_draw_two_01",
+        "title": "blue Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_100",
+      "title": "blue Draw Two",
+      "front": {
+        "slug": "blue_blue_draw_two_02",
+        "title": "blue Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_101",
+      "title": "Wild",
+      "front": {
+        "slug": "wild_wild",
+        "title": "Wild",
+        "category": "wild",
+        "effect": "wild",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_102",
+      "title": "Wild Draw Four",
+      "front": {
+        "slug": "wild_wild_draw_four",
+        "title": "Wild Draw Four",
+        "category": "wild",
+        "effect": "wild_draw_four",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_103",
+      "title": "Wild",
+      "front": {
+        "slug": "wild_wild",
+        "title": "Wild",
+        "category": "wild",
+        "effect": "wild",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_104",
+      "title": "Wild Draw Four",
+      "front": {
+        "slug": "wild_wild_draw_four",
+        "title": "Wild Draw Four",
+        "category": "wild",
+        "effect": "wild_draw_four",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_105",
+      "title": "Wild",
+      "front": {
+        "slug": "wild_wild",
+        "title": "Wild",
+        "category": "wild",
+        "effect": "wild",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_106",
+      "title": "Wild Draw Four",
+      "front": {
+        "slug": "wild_wild_draw_four",
+        "title": "Wild Draw Four",
+        "category": "wild",
+        "effect": "wild_draw_four",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_107",
+      "title": "Wild",
+      "front": {
+        "slug": "wild_wild",
+        "title": "Wild",
+        "category": "wild",
+        "effect": "wild",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_original_108_108",
+      "title": "Wild Draw Four",
+      "front": {
+        "slug": "wild_wild_draw_four",
+        "title": "Wild Draw Four",
+        "category": "wild",
+        "effect": "wild_draw_four",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    }
+  ]
+}

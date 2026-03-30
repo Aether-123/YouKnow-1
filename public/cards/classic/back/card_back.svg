@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350" width="250" height="350">
+  <defs>
+    <clipPath id="back-clip"><rect x="0" y="0" width="250" height="350" rx="18" ry="18"/></clipPath>
+
+    <radialGradient id="back-bg" cx="35%" cy="28%" r="80%">
+      <stop offset="0%"   stop-color="#E53535"/>
+      <stop offset="55%"  stop-color="#B71C1C"/>
+      <stop offset="100%" stop-color="#7F0000"/>
+    </radialGradient>
+    <radialGradient id="back-oval-fill" cx="38%" cy="32%" r="70%">
+      <stop offset="0%"   stop-color="#2C3E9E"/>
+      <stop offset="100%" stop-color="#0D1B6D"/>
+    </radialGradient>
+    <linearGradient id="back-oval-shine" x1="0%" y1="0%" x2="55%" y2="100%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="back-shine" x1="0%" y1="0%" x2="55%" y2="100%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.18"/>
+      <stop offset="50%"  stop-color="#FFFFFF" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="back-brd" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.60"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.10"/>
+    </linearGradient>
+    <filter id="back-shadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#00004A" flood-opacity="0.65"/>
+    </filter>
+    <filter id="back-txt-shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#000044" flood-opacity="0.65"/>
+    </filter>
+    <filter id="back-gold-shadow">
+      <feDropShadow dx="1" dy="1" stdDeviation="2" flood-color="#7F0000" flood-opacity="0.55"/>
+    </filter>
+    <!-- Diagonal hatch pattern -->
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.07"/>
+    </pattern>
+  </defs>
+
+  <g clip-path="url(#back-clip)">
+    <!-- Background -->
+    <rect x="0" y="0" width="250" height="350" fill="url(#back-bg)"/>
+    <!-- Diagonal hatch -->
+    <rect x="0" y="0" width="250" height="350" fill="url(#hatch)"/>
+
+    <!-- Outer frame rings -->
+    <rect x="7"  y="7"  width="236" height="336" rx="14" ry="14"
+          fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-opacity="0.22"/>
+    <rect x="13" y="13" width="224" height="324" rx="10" ry="10"
+          fill="none" stroke="#FFFFFF" stroke-width="0.8" stroke-opacity="0.11"/>
+
+    <!-- Diamond border ornaments -->
+    <!-- Top row -->
+    <rect x="17" y="16" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,21,20)"/><rect x="40" y="16" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,44,20)"/><rect x="63" y="16" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,67,20)"/><rect x="86" y="16" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,90,20)"/><rect x="109" y="16" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,113,20)"/><rect x="132" y="16" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,136,20)"/><rect x="155" y="16" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,159,20)"/><rect x="178" y="16" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,182,20)"/><rect x="201" y="16" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,205,20)"/>
+    <!-- Bottom row -->
+    <rect x="17" y="325" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,21,329)"/><rect x="40" y="325" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,44,329)"/><rect x="63" y="325" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,67,329)"/><rect x="86" y="325" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,90,329)"/><rect x="109" y="325" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,113,329)"/><rect x="132" y="325" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,136,329)"/><rect x="155" y="325" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,159,329)"/><rect x="178" y="325" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,182,329)"/><rect x="201" y="325" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,205,329)"/>
+    <!-- Left column -->
+    <rect x="16" y="28" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,20,32)"/><rect x="16" y="51" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,20,55)"/><rect x="16" y="74" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,20,78)"/><rect x="16" y="97" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,20,101)"/><rect x="16" y="120" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,20,124)"/><rect x="16" y="143" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,20,147)"/><rect x="16" y="166" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,20,170)"/><rect x="16" y="189" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,20,193)"/><rect x="16" y="212" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,20,216)"/><rect x="16" y="235" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,20,239)"/><rect x="16" y="258" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,20,262)"/><rect x="16" y="281" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,20,285)"/>
+    <!-- Right column -->
+    <rect x="225" y="28" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,229,32)"/><rect x="225" y="51" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,229,55)"/><rect x="225" y="74" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,229,78)"/><rect x="225" y="97" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,229,101)"/><rect x="225" y="120" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,229,124)"/><rect x="225" y="143" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,229,147)"/><rect x="225" y="166" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,229,170)"/><rect x="225" y="189" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,229,193)"/><rect x="225" y="212" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,229,216)"/><rect x="225" y="235" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,229,239)"/><rect x="225" y="258" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,229,262)"/><rect x="225" y="281" width="9" height="9" fill="#FFFFFF" opacity="0.13" transform="rotate(45,229,285)"/>
+
+    <!-- Central navy oval -->
+    <ellipse cx="125" cy="175" rx="88" ry="118"
+             fill="url(#back-oval-fill)" transform="rotate(-20,125,175)"
+             filter="url(#back-shadow)"/>
+    <!-- Oval shine -->
+    <ellipse cx="125" cy="175" rx="88" ry="118"
+             fill="url(#back-oval-shine)" transform="rotate(-20,125,175)"/>
+    <!-- Oval border -->
+    <ellipse cx="125" cy="175" rx="88" ry="118"
+             fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-opacity="0.28"
+             transform="rotate(-20,125,175)"/>
+    <ellipse cx="125" cy="175" rx="80" ry="109"
+             fill="none" stroke="#FFFFFF" stroke-width="0.8" stroke-opacity="0.12"
+             transform="rotate(-20,125,175)"/>
+
+    <!-- UNO logotype: dark shadow, red outline stroke, white fill -->
+    <!-- 1. Drop shadow -->
+    <text x="128" y="201"
+          font-family="'Arial Black',Impact,Arial,sans-serif" font-size="76" font-weight="900"
+          fill="#000055" text-anchor="middle" opacity="0.45">UNO</text>
+    <!-- 2. Red outline -->
+    <text x="125" y="199"
+          font-family="'Arial Black',Impact,Arial,sans-serif" font-size="76" font-weight="900"
+          fill="none" stroke="#C62828" stroke-width="7" stroke-linejoin="round"
+          text-anchor="middle" filter="url(#back-txt-shadow)">UNO</text>
+    <!-- 3. White fill -->
+    <text x="125" y="199"
+          font-family="'Arial Black',Impact,Arial,sans-serif" font-size="76" font-weight="900"
+          fill="#FFFFFF" text-anchor="middle" letter-spacing="2">UNO</text>
+    <!-- 4. Shine on text -->
+    <text x="125" y="199"
+          font-family="'Arial Black',Impact,Arial,sans-serif" font-size="76" font-weight="900"
+          fill="url(#back-oval-shine)" text-anchor="middle" letter-spacing="2">UNO</text>
+
+    <!-- Gold corner pips -->
+    <circle cx="24"   cy="24"   r="6" fill="#FFD700" filter="url(#back-gold-shadow)"/>
+    <circle cx="226" cy="24"   r="6" fill="#FFD700" filter="url(#back-gold-shadow)"/>
+    <circle cx="24"   cy="326" r="6" fill="#FFD700" filter="url(#back-gold-shadow)"/>
+    <circle cx="226" cy="326" r="6" fill="#FFD700" filter="url(#back-gold-shadow)"/>
+    <!-- Inner pip ring -->
+    <circle cx="24"   cy="24"   r="3" fill="#FFFFFF" opacity="0.6"/>
+    <circle cx="226" cy="24"   r="3" fill="#FFFFFF" opacity="0.6"/>
+    <circle cx="24"   cy="326" r="3" fill="#FFFFFF" opacity="0.6"/>
+    <circle cx="226" cy="326" r="3" fill="#FFFFFF" opacity="0.6"/>
+
+    <!-- Shine overlay -->
+    <rect x="0" y="0" width="250" height="350" fill="url(#back-shine)"/>
+  </g>
+
+  <rect x="1.5" y="1.5" width="247" height="347" rx="17" ry="17"
+        fill="none" stroke="url(#back-brd)" stroke-width="2.5"/>
+  <rect x="0"   y="0"   width="250"   height="350"   rx="18"   ry="18"
+        fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.28"/>
+</svg>

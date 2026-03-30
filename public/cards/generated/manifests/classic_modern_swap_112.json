@@ -1,0 +1,1468 @@
+{
+  "deck_key": "classic_modern_swap_112",
+  "deck_title": "Classic UNO (Modern 112 - Swap Hands)",
+  "theme": "classic",
+  "physical_card_count": 112,
+  "notes": [
+    "Classic original uses the standard 108-card deck.",
+    "Modern classic decks add 3 Wild Customizable cards plus either Wild Swap Hands or Wild Shuffle Hands."
+  ],
+  "cards": [
+    {
+      "id": "classic_modern_swap_112_001",
+      "title": "red 0",
+      "front": {
+        "slug": "red_red_0_01",
+        "title": "red 0",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_002",
+      "title": "red 1",
+      "front": {
+        "slug": "red_red_1_01",
+        "title": "red 1",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_003",
+      "title": "red 1",
+      "front": {
+        "slug": "red_red_1_02",
+        "title": "red 1",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_004",
+      "title": "red 2",
+      "front": {
+        "slug": "red_red_2_01",
+        "title": "red 2",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_005",
+      "title": "red 2",
+      "front": {
+        "slug": "red_red_2_02",
+        "title": "red 2",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_006",
+      "title": "red 3",
+      "front": {
+        "slug": "red_red_3_01",
+        "title": "red 3",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_007",
+      "title": "red 3",
+      "front": {
+        "slug": "red_red_3_02",
+        "title": "red 3",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_008",
+      "title": "red 4",
+      "front": {
+        "slug": "red_red_4_01",
+        "title": "red 4",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_009",
+      "title": "red 4",
+      "front": {
+        "slug": "red_red_4_02",
+        "title": "red 4",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_010",
+      "title": "red 5",
+      "front": {
+        "slug": "red_red_5_01",
+        "title": "red 5",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_011",
+      "title": "red 5",
+      "front": {
+        "slug": "red_red_5_02",
+        "title": "red 5",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_012",
+      "title": "red 6",
+      "front": {
+        "slug": "red_red_6_01",
+        "title": "red 6",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_013",
+      "title": "red 6",
+      "front": {
+        "slug": "red_red_6_02",
+        "title": "red 6",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_014",
+      "title": "red 7",
+      "front": {
+        "slug": "red_red_7_01",
+        "title": "red 7",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_015",
+      "title": "red 7",
+      "front": {
+        "slug": "red_red_7_02",
+        "title": "red 7",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_016",
+      "title": "red 8",
+      "front": {
+        "slug": "red_red_8_01",
+        "title": "red 8",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_017",
+      "title": "red 8",
+      "front": {
+        "slug": "red_red_8_02",
+        "title": "red 8",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_018",
+      "title": "red 9",
+      "front": {
+        "slug": "red_red_9_01",
+        "title": "red 9",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_019",
+      "title": "red 9",
+      "front": {
+        "slug": "red_red_9_02",
+        "title": "red 9",
+        "category": "number",
+        "effect": "number",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_020",
+      "title": "red Skip",
+      "front": {
+        "slug": "red_red_skip_01",
+        "title": "red Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_021",
+      "title": "red Skip",
+      "front": {
+        "slug": "red_red_skip_02",
+        "title": "red Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_022",
+      "title": "red Reverse",
+      "front": {
+        "slug": "red_red_reverse_01",
+        "title": "red Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_023",
+      "title": "red Reverse",
+      "front": {
+        "slug": "red_red_reverse_02",
+        "title": "red Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_024",
+      "title": "red Draw Two",
+      "front": {
+        "slug": "red_red_draw_two_01",
+        "title": "red Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_025",
+      "title": "red Draw Two",
+      "front": {
+        "slug": "red_red_draw_two_02",
+        "title": "red Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "red",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_026",
+      "title": "yellow 0",
+      "front": {
+        "slug": "yellow_yellow_0_01",
+        "title": "yellow 0",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_027",
+      "title": "yellow 1",
+      "front": {
+        "slug": "yellow_yellow_1_01",
+        "title": "yellow 1",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_028",
+      "title": "yellow 1",
+      "front": {
+        "slug": "yellow_yellow_1_02",
+        "title": "yellow 1",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_029",
+      "title": "yellow 2",
+      "front": {
+        "slug": "yellow_yellow_2_01",
+        "title": "yellow 2",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_030",
+      "title": "yellow 2",
+      "front": {
+        "slug": "yellow_yellow_2_02",
+        "title": "yellow 2",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_031",
+      "title": "yellow 3",
+      "front": {
+        "slug": "yellow_yellow_3_01",
+        "title": "yellow 3",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_032",
+      "title": "yellow 3",
+      "front": {
+        "slug": "yellow_yellow_3_02",
+        "title": "yellow 3",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_033",
+      "title": "yellow 4",
+      "front": {
+        "slug": "yellow_yellow_4_01",
+        "title": "yellow 4",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_034",
+      "title": "yellow 4",
+      "front": {
+        "slug": "yellow_yellow_4_02",
+        "title": "yellow 4",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_035",
+      "title": "yellow 5",
+      "front": {
+        "slug": "yellow_yellow_5_01",
+        "title": "yellow 5",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_036",
+      "title": "yellow 5",
+      "front": {
+        "slug": "yellow_yellow_5_02",
+        "title": "yellow 5",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_037",
+      "title": "yellow 6",
+      "front": {
+        "slug": "yellow_yellow_6_01",
+        "title": "yellow 6",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_038",
+      "title": "yellow 6",
+      "front": {
+        "slug": "yellow_yellow_6_02",
+        "title": "yellow 6",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_039",
+      "title": "yellow 7",
+      "front": {
+        "slug": "yellow_yellow_7_01",
+        "title": "yellow 7",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_040",
+      "title": "yellow 7",
+      "front": {
+        "slug": "yellow_yellow_7_02",
+        "title": "yellow 7",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_041",
+      "title": "yellow 8",
+      "front": {
+        "slug": "yellow_yellow_8_01",
+        "title": "yellow 8",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_042",
+      "title": "yellow 8",
+      "front": {
+        "slug": "yellow_yellow_8_02",
+        "title": "yellow 8",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_043",
+      "title": "yellow 9",
+      "front": {
+        "slug": "yellow_yellow_9_01",
+        "title": "yellow 9",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_044",
+      "title": "yellow 9",
+      "front": {
+        "slug": "yellow_yellow_9_02",
+        "title": "yellow 9",
+        "category": "number",
+        "effect": "number",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_045",
+      "title": "yellow Skip",
+      "front": {
+        "slug": "yellow_yellow_skip_01",
+        "title": "yellow Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_046",
+      "title": "yellow Skip",
+      "front": {
+        "slug": "yellow_yellow_skip_02",
+        "title": "yellow Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_047",
+      "title": "yellow Reverse",
+      "front": {
+        "slug": "yellow_yellow_reverse_01",
+        "title": "yellow Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_048",
+      "title": "yellow Reverse",
+      "front": {
+        "slug": "yellow_yellow_reverse_02",
+        "title": "yellow Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_049",
+      "title": "yellow Draw Two",
+      "front": {
+        "slug": "yellow_yellow_draw_two_01",
+        "title": "yellow Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_050",
+      "title": "yellow Draw Two",
+      "front": {
+        "slug": "yellow_yellow_draw_two_02",
+        "title": "yellow Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "yellow",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_051",
+      "title": "green 0",
+      "front": {
+        "slug": "green_green_0_01",
+        "title": "green 0",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_052",
+      "title": "green 1",
+      "front": {
+        "slug": "green_green_1_01",
+        "title": "green 1",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_053",
+      "title": "green 1",
+      "front": {
+        "slug": "green_green_1_02",
+        "title": "green 1",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_054",
+      "title": "green 2",
+      "front": {
+        "slug": "green_green_2_01",
+        "title": "green 2",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_055",
+      "title": "green 2",
+      "front": {
+        "slug": "green_green_2_02",
+        "title": "green 2",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_056",
+      "title": "green 3",
+      "front": {
+        "slug": "green_green_3_01",
+        "title": "green 3",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_057",
+      "title": "green 3",
+      "front": {
+        "slug": "green_green_3_02",
+        "title": "green 3",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_058",
+      "title": "green 4",
+      "front": {
+        "slug": "green_green_4_01",
+        "title": "green 4",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_059",
+      "title": "green 4",
+      "front": {
+        "slug": "green_green_4_02",
+        "title": "green 4",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_060",
+      "title": "green 5",
+      "front": {
+        "slug": "green_green_5_01",
+        "title": "green 5",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_061",
+      "title": "green 5",
+      "front": {
+        "slug": "green_green_5_02",
+        "title": "green 5",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_062",
+      "title": "green 6",
+      "front": {
+        "slug": "green_green_6_01",
+        "title": "green 6",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_063",
+      "title": "green 6",
+      "front": {
+        "slug": "green_green_6_02",
+        "title": "green 6",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_064",
+      "title": "green 7",
+      "front": {
+        "slug": "green_green_7_01",
+        "title": "green 7",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_065",
+      "title": "green 7",
+      "front": {
+        "slug": "green_green_7_02",
+        "title": "green 7",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_066",
+      "title": "green 8",
+      "front": {
+        "slug": "green_green_8_01",
+        "title": "green 8",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_067",
+      "title": "green 8",
+      "front": {
+        "slug": "green_green_8_02",
+        "title": "green 8",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_068",
+      "title": "green 9",
+      "front": {
+        "slug": "green_green_9_01",
+        "title": "green 9",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_069",
+      "title": "green 9",
+      "front": {
+        "slug": "green_green_9_02",
+        "title": "green 9",
+        "category": "number",
+        "effect": "number",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_070",
+      "title": "green Skip",
+      "front": {
+        "slug": "green_green_skip_01",
+        "title": "green Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_071",
+      "title": "green Skip",
+      "front": {
+        "slug": "green_green_skip_02",
+        "title": "green Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_072",
+      "title": "green Reverse",
+      "front": {
+        "slug": "green_green_reverse_01",
+        "title": "green Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_073",
+      "title": "green Reverse",
+      "front": {
+        "slug": "green_green_reverse_02",
+        "title": "green Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_074",
+      "title": "green Draw Two",
+      "front": {
+        "slug": "green_green_draw_two_01",
+        "title": "green Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_075",
+      "title": "green Draw Two",
+      "front": {
+        "slug": "green_green_draw_two_02",
+        "title": "green Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "green",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_076",
+      "title": "blue 0",
+      "front": {
+        "slug": "blue_blue_0_01",
+        "title": "blue 0",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_077",
+      "title": "blue 1",
+      "front": {
+        "slug": "blue_blue_1_01",
+        "title": "blue 1",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_078",
+      "title": "blue 1",
+      "front": {
+        "slug": "blue_blue_1_02",
+        "title": "blue 1",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_079",
+      "title": "blue 2",
+      "front": {
+        "slug": "blue_blue_2_01",
+        "title": "blue 2",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_080",
+      "title": "blue 2",
+      "front": {
+        "slug": "blue_blue_2_02",
+        "title": "blue 2",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_081",
+      "title": "blue 3",
+      "front": {
+        "slug": "blue_blue_3_01",
+        "title": "blue 3",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_082",
+      "title": "blue 3",
+      "front": {
+        "slug": "blue_blue_3_02",
+        "title": "blue 3",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_083",
+      "title": "blue 4",
+      "front": {
+        "slug": "blue_blue_4_01",
+        "title": "blue 4",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_084",
+      "title": "blue 4",
+      "front": {
+        "slug": "blue_blue_4_02",
+        "title": "blue 4",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_085",
+      "title": "blue 5",
+      "front": {
+        "slug": "blue_blue_5_01",
+        "title": "blue 5",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_086",
+      "title": "blue 5",
+      "front": {
+        "slug": "blue_blue_5_02",
+        "title": "blue 5",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_087",
+      "title": "blue 6",
+      "front": {
+        "slug": "blue_blue_6_01",
+        "title": "blue 6",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_088",
+      "title": "blue 6",
+      "front": {
+        "slug": "blue_blue_6_02",
+        "title": "blue 6",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_089",
+      "title": "blue 7",
+      "front": {
+        "slug": "blue_blue_7_01",
+        "title": "blue 7",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_090",
+      "title": "blue 7",
+      "front": {
+        "slug": "blue_blue_7_02",
+        "title": "blue 7",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_091",
+      "title": "blue 8",
+      "front": {
+        "slug": "blue_blue_8_01",
+        "title": "blue 8",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_092",
+      "title": "blue 8",
+      "front": {
+        "slug": "blue_blue_8_02",
+        "title": "blue 8",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_093",
+      "title": "blue 9",
+      "front": {
+        "slug": "blue_blue_9_01",
+        "title": "blue 9",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_094",
+      "title": "blue 9",
+      "front": {
+        "slug": "blue_blue_9_02",
+        "title": "blue 9",
+        "category": "number",
+        "effect": "number",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_095",
+      "title": "blue Skip",
+      "front": {
+        "slug": "blue_blue_skip_01",
+        "title": "blue Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_096",
+      "title": "blue Skip",
+      "front": {
+        "slug": "blue_blue_skip_02",
+        "title": "blue Skip",
+        "category": "action",
+        "effect": "skip",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_097",
+      "title": "blue Reverse",
+      "front": {
+        "slug": "blue_blue_reverse_01",
+        "title": "blue Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_098",
+      "title": "blue Reverse",
+      "front": {
+        "slug": "blue_blue_reverse_02",
+        "title": "blue Reverse",
+        "category": "action",
+        "effect": "reverse",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_099",
+      "title": "blue Draw Two",
+      "front": {
+        "slug": "blue_blue_draw_two_01",
+        "title": "blue Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_100",
+      "title": "blue Draw Two",
+      "front": {
+        "slug": "blue_blue_draw_two_02",
+        "title": "blue Draw Two",
+        "category": "action",
+        "effect": "draw_two",
+        "color": "blue",
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_101",
+      "title": "Wild",
+      "front": {
+        "slug": "wild_wild",
+        "title": "Wild",
+        "category": "wild",
+        "effect": "wild",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_102",
+      "title": "Wild Draw Four",
+      "front": {
+        "slug": "wild_wild_draw_four",
+        "title": "Wild Draw Four",
+        "category": "wild",
+        "effect": "wild_draw_four",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_103",
+      "title": "Wild",
+      "front": {
+        "slug": "wild_wild",
+        "title": "Wild",
+        "category": "wild",
+        "effect": "wild",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_104",
+      "title": "Wild Draw Four",
+      "front": {
+        "slug": "wild_wild_draw_four",
+        "title": "Wild Draw Four",
+        "category": "wild",
+        "effect": "wild_draw_four",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_105",
+      "title": "Wild",
+      "front": {
+        "slug": "wild_wild",
+        "title": "Wild",
+        "category": "wild",
+        "effect": "wild",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_106",
+      "title": "Wild Draw Four",
+      "front": {
+        "slug": "wild_wild_draw_four",
+        "title": "Wild Draw Four",
+        "category": "wild",
+        "effect": "wild_draw_four",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_107",
+      "title": "Wild",
+      "front": {
+        "slug": "wild_wild",
+        "title": "Wild",
+        "category": "wild",
+        "effect": "wild",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_108",
+      "title": "Wild Draw Four",
+      "front": {
+        "slug": "wild_wild_draw_four",
+        "title": "Wild Draw Four",
+        "category": "wild",
+        "effect": "wild_draw_four",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_109",
+      "title": "Wild Customizable",
+      "front": {
+        "slug": "wild_wild_customizable_01",
+        "title": "Wild Customizable",
+        "category": "wild",
+        "effect": "wild_customizable",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_110",
+      "title": "Wild Customizable",
+      "front": {
+        "slug": "wild_wild_customizable_02",
+        "title": "Wild Customizable",
+        "category": "wild",
+        "effect": "wild_customizable",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_111",
+      "title": "Wild Customizable",
+      "front": {
+        "slug": "wild_wild_customizable_03",
+        "title": "Wild Customizable",
+        "category": "wild",
+        "effect": "wild_customizable",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    },
+    {
+      "id": "classic_modern_swap_112_112",
+      "title": "Wild Swap Hands",
+      "front": {
+        "slug": "wild_wild_swap_hands",
+        "title": "Wild Swap Hands",
+        "category": "wild",
+        "effect": "wild_swap_hands",
+        "color": null,
+        "side": null,
+        "tags": []
+      }
+    }
+  ]
+}

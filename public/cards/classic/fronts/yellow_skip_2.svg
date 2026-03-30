@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 350" width="250" height="350">
+  <defs>
+    <clipPath id="cc-yellow-skip"><rect x="0" y="0" width="250" height="350" rx="18" ry="18"/></clipPath>
+
+    <radialGradient id="bg-yellow-skip" cx="35%" cy="28%" r="80%">
+      <stop offset="0%"   stop-color="#FFD54F"/>
+      <stop offset="50%"  stop-color="#E8A000"/>
+      <stop offset="100%" stop-color="#B56A00"/>
+    </radialGradient>
+
+    <radialGradient id="ov-yellow-skip" cx="38%" cy="32%" r="70%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#E8E8E8" stop-opacity="0.92"/>
+    </radialGradient>
+
+    <linearGradient id="shine-yellow-skip" x1="0%" y1="0%" x2="55%" y2="100%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.20"/>
+      <stop offset="50%"  stop-color="#FFFFFF" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="brd-yellow-skip" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.60"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.10"/>
+    </linearGradient>
+
+    <filter id="dropshadow-yellow-skip" x="-12%" y="-12%" width="124%" height="124%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#6b3e00" flood-opacity="0.60"/>
+    </filter>
+    <filter id="txtshadow-yellow-skip">
+      <feDropShadow dx="1" dy="1.5" stdDeviation="1.5" flood-color="#6b3e00" flood-opacity="0.70"/>
+    </filter>
+    <filter id="symglow-yellow-skip" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g clip-path="url(#cc-yellow-skip)">
+    <rect x="0" y="0" width="250" height="350" fill="url(#bg-yellow-skip)"/>
+    <!-- Decorative background ovals -->
+    <ellipse cx="125" cy="175" rx="112" ry="155" fill="none" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.10"/>
+    <ellipse cx="125" cy="175" rx="88"  ry="122" fill="none" stroke="#FFFFFF" stroke-width="0.7" stroke-opacity="0.07"/>
+    <!-- Corner accent dots -->
+    <circle cx="12"   cy="12"   r="3" fill="#FFFFFF" opacity="0.18"/>
+    <circle cx="238" cy="12"   r="3" fill="#FFFFFF" opacity="0.18"/>
+    <circle cx="12"   cy="338" r="3" fill="#FFFFFF" opacity="0.18"/>
+    <circle cx="238" cy="338" r="3" fill="#FFFFFF" opacity="0.18"/>
+
+    <!-- Centre white oval -->
+    <ellipse cx="125" cy="175" rx="86" ry="114" fill="url(#ov-yellow-skip)"
+             transform="rotate(-20,125,175)" filter="url(#dropshadow-yellow-skip)"/>
+    <ellipse cx="125" cy="175" rx="86" ry="114" fill="none" stroke="#CCCCCC" stroke-width="1"
+             transform="rotate(-20,125,175)"/>
+    <!-- SKIP symbol: filled ring with slash -->
+    <!-- Outer filled disc (ring colour) -->
+    <circle cx="125" cy="169" r="56" fill="#E8A000" filter="url(#dropshadow-yellow-skip)"/>
+    <!-- Inner white disc (punch out centre) -->
+    <circle cx="125" cy="169" r="43" fill="#FFFFFF"/>
+    <!-- White ring highlight -->
+    <circle cx="125" cy="169" r="56" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-opacity="0.30"/>
+
+    <!-- Person silhouette inside ring (in card colour so it shows on white) -->
+    <!-- Head -->
+    <circle cx="125" cy="149" r="9" fill="#E8A000"/>
+    <!-- Body -->
+    <rect x="120" y="159" width="10" height="20" rx="3" fill="#E8A000"/>
+    <!-- Left leg -->
+    <line x1="123" y1="179" x2="114" y2="191"
+          stroke="#E8A000" stroke-width="7" stroke-linecap="round"/>
+    <!-- Right leg -->
+    <line x1="127" y1="179" x2="136" y2="191"
+          stroke="#E8A000" stroke-width="7" stroke-linecap="round"/>
+
+    <!-- Diagonal slash (card colour rectangle rotated 45°, sits on top of person) -->
+    <rect x="116" y="106"
+          width="18" height="126" rx="9"
+          fill="#E8A000" transform="rotate(45,125,169)"/>
+    <!-- Slash highlight edge -->
+    <rect x="116" y="106"
+          width="18" height="126" rx="9"
+          fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.25"
+          transform="rotate(45,125,169)"/>
+    <!-- Outer ring border (drawn on top to clean up edges) -->
+    <circle cx="125" cy="169" r="57" fill="none" stroke="#E8A000" stroke-width="2"/>
+
+    <text x="125" y="271" font-family="'Arial Black',Arial,sans-serif"
+          font-size="15" font-weight="900" fill="#1A1000" text-anchor="middle"
+          filter="url(#txtshadow-yellow-skip)" letter-spacing="1">SKIP</text>
+    <!-- Corner labels -->
+    <text x="15" y="48" font-family="'Arial Black',Arial,sans-serif" font-size="30" font-weight="900"
+          fill="#1A1000" filter="url(#txtshadow-yellow-skip)">⊘</text>
+    <text x="235" y="338" font-family="'Arial Black',Arial,sans-serif" font-size="30" font-weight="900"
+          fill="#1A1000" text-anchor="end" filter="url(#txtshadow-yellow-skip)"
+          transform="rotate(180,125,175)">⊘</text>
+    <rect x="0" y="0" width="250" height="350" fill="url(#shine-yellow-skip)"/>
+  </g>
+  <rect x="1.5" y="1.5" width="247" height="347" rx="17" ry="17" fill="none" stroke="url(#brd-yellow-skip)" stroke-width="2.5"/>
+  <rect x="0"   y="0"   width="250"   height="350"   rx="18"   ry="18"   fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-opacity="0.28"/>
+</svg>
