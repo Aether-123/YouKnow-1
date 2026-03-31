@@ -88,6 +88,27 @@
   #score-modal .score-list { padding: 0 10px 8px 10px; }
   .score-row { font-size: 13px; }
   .score-row.winner { font-size: 15px; }
+
+  .uno-btn, .draw-btn, .caught-btn {
+    font-size: 12px;
+    padding: 7px 12px;
+    min-width: 90px;
+    max-width: 90vw;
+  }
+  #multi-play-btn, .board-draw-btn, .board-uno-btn {
+    bottom: 18px !important;
+  }
+  .caught-btn {
+    margin-bottom: 4px;
+    min-width: 90px;
+    max-width: 90vw;
+  }
+  .caught-btn, #multi-play-btn {
+    width: 90vw;
+    box-sizing: border-box;
+    left: 5vw !important;
+    transform: none !important;
+  }
 }
 /* Disabled state for draw button */
 .draw-btn.disabled {
