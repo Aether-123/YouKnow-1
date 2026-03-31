@@ -237,77 +237,24 @@ window.renderUnoBoard = function(gameState, roomData, myId) {
       return;
     }
 
-    // ── MY hand: render interactive cards (skip full rebuild if cards unchanged)
-    const handKey = hand.map(c => c.id + (selectedIds.includes(c.id) ? 'S' : '')).join(',');
-    if (handDiv.dataset.handKey === handKey && handDiv.dataset.turn === String(isCurrentPlayer)) return;
-    handDiv.dataset.handKey = handKey;
-    handDiv.dataset.turn = String(isCurrentPlayer);
-    handDiv.innerHTML = '';
-
-    const prevHand = prevState?.hands?.[p.id]?.map(c => c.id) || [];
-
-    // My hand: display at bottom, un-rotated (reset rotation for me)
-    handDiv.style.transform = `translate(-50%, -50%) rotate(0deg)`;
-    handDiv.style.bottom = 'auto';
-    handDiv.style.gap = '3px';
-    handDiv.style.pointerEvents = 'auto';
-
-    const myTurn = gameState.currentPlayer === myId && gameState.phase === 'play';
-
-    // Calculate fan spread for large hands
-    const maxCardWidth = window.innerWidth < 480 ? 52 : 72;
-    const totalCards = hand.filter(c => !c.hidden).length;
-    const containerWidth = Math.min(window.innerWidth * 0.92, 700);
-    const cardGap = totalCards > 1 ? Math.min(maxCardWidth + 2, Math.floor((containerWidth - maxCardWidth) / totalCards)) : maxCardWidth;
-
-    hand.forEach((card, i) => {
-      if (card.hidden) return;
-      const wrap = document.createElement('div');
-      wrap.className = 'card-wrap' + (selectedIds.includes(card.id) ? ' sel' : '');
-      wrap.dataset.id = card.id;
-      wrap.style.width = maxCardWidth + 'px';
-      wrap.style.flexShrink = '0';
-
-      // Card art
-      const img = document.createElement('img');
-      img.src = getCardArtFilename(card, card.id || i, gameState);
-      img.width = maxCardWidth;
-      img.height = Math.round(maxCardWidth * 1.4);
-      img.style.display = 'block';
-      img.draggable = false;
-      wrap.appendChild(img);
-
-      if (selectedIds.includes(card.id)) {
-        const ring = document.createElement('div');
-        ring.className = 'sel-ring';
-        wrap.appendChild(ring);
-      }
-
-      // Check playability
-      const playable = myTurn && window.isPlayable ? window.isPlayable(card, gameState, gameState.variant || 'classic') : false;
-      const isDrawn = window.canPlayDrawn === card.id;
-      if (!myTurn || (!playable && !isDrawn)) wrap.classList.add('dim');
-
-      if (myTurn) {
-        wrap.style.cursor = 'pointer';
-        // Touch-friendly: use pointerup instead of click to avoid ghost taps
-        let _ptDown = false;
-        wrap.addEventListener('pointerdown', () => { _ptDown = true; }, { passive: true });
-        wrap.addEventListener('pointerup', (e) => {
-          if (!_ptDown) return;
-          _ptDown = false;
-          e.stopPropagation();
-          if (window.onCardClick) window.onCardClick(card, wrap, gameState, gameState.variant || 'classic');
-        });
-      }
-
-      if (prevHand && !prevHand.includes(card.id)) {
-        wrap.classList.add('animated-draw');
-      }
-
-      handDiv.appendChild(wrap);
-    });
+    // ── MY seat: just show a "You" label badge on the board; real cards are in #hand-scroll
+    if (isMe) {
+      handDiv.innerHTML = '';
+      const myCardCount = hand.filter(c => !c.hidden).length;
+      const badge = document.createElement('div');
+      badge.className = 'opp-hand-badge' + (isCurrentPlayer ? ' opp-active' : '');
+      badge.innerHTML = `
+        <div class="opp-name-label${isCurrentPlayer ? ' active' : ''}">You ${isCurrentPlayer ? '• Your Turn' : ''}</div>
+        <div class="opp-count-label">${myCardCount} card${myCardCount !== 1 ? 's' : ''}</div>
+      `;
+      handDiv.appendChild(badge);
+      // Position my badge at the bottom
+      handDiv.style.transform = 'translate(-50%, -50%)';
+      handDiv.style.pointerEvents = 'none';
+      return;
   });
+
+
 
   // Remove any stale player hand zones for players who left
   const allHandZones = handsDiv.querySelectorAll('.board-hand-zone');
