@@ -282,7 +282,7 @@
 }
 .draw-stack, .discard-stack {
   position: relative;
-  width: 52px; height: 76px;
+  width: 72px; height: 106px;
 }
 .hand-row, .hand-col {
   position: absolute;
@@ -311,7 +311,7 @@
   flex-direction: column;
 }
 .uno-card {
-  width: 52px; height: 76px;
+  width: 72px; height: 106px;
   border-radius: 5px;
   transform-style: preserve-3d;
   position: relative;
@@ -320,6 +320,7 @@
   cursor: pointer;
   /* Animation states */
   opacity: 1;
+  will-change: transform;
 }
 .uno-card.animated-deal {
   animation: cardDeal 0.5s cubic-bezier(.4,1.6,.6,1) backwards;
@@ -335,7 +336,7 @@
 }
 .uno-card:hover {
   z-index: 999;
-  filter: brightness(1.2) drop-shadow(0 8px 16px #fff5);
+  filter: brightness(1.2);
   transform: translateY(-18px) scale(1.08) translateZ(5px);
   box-shadow: 0 8px 32px #fff8, 0 2px 8px #000a;
 }
@@ -355,7 +356,7 @@
   from { opacity: 1; }
   to   { opacity: 0; transform: scale(0.7) translateY(40px) rotateZ(-8deg); }
 }
-}
+
 .uno-card .cf, .uno-card .cb {
   position: absolute;
   width: 100%; height: 100%;
@@ -799,7 +800,7 @@ input{font-family:inherit;outline:none}
 @media(max-width:520px){
   .variants{grid-template-columns:1fr}
   .v-desc{display:none}
-  .card-wrap canvas, .card-wrap img {width:54px!important;height:76px!important}
+  .card-wrap canvas, .card-wrap img {width:76px!important;height:106px!important}
   
   #uno-world { transform: scale(0.55); transform-origin: center 40%; }
   

@@ -225,6 +225,15 @@ io.on('connection', socket => {
     broadcastEvent(room, result.event, {scores:result.state.scores});
   });
 
+  socket.on('playAgain', ({code}, cb) => {
+    const room = rooms.get(code);
+    if (!room) return;
+    room.status = 'lobby';
+    room.game = null;
+    if (cb) cb({ok: true});
+    broadcastRoom(room);
+  });
+
   // CHAT
   socket.on('chat', ({code, message, name}) => {
     const room=rooms.get(code); if(!room) return;
@@ -284,7 +293,7 @@ setInterval(()=>{
   }
 }, 60*60*1000);
 
-const PORT = process.env.PORT || 3010;
+const PORT = process.env.PORT || 4000;
 server.listen(PORT, () => {
   console.log(`\n🃏  UNO 3D Multiplayer  →  http://localhost:${PORT}\n`);
   console.log('   Variants: Classic · Harry Potter · UNO Flip · Show Em No Mercy');

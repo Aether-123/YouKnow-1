@@ -79,7 +79,7 @@ function applyPlay(game, playerId, cardIds, chosenColor) {
       });
     }
 
-    if (['draw1','draw2','draw4','draw5','wildDraw2','wild4','wildRevDraw4','wildDraw6','wildDraw10'].includes(t)) {
+    if (['draw1','draw2','draw4','draw5','wildDraw2','wild4','voldemort','wildRevDraw4','wildDraw6','wildDraw10'].includes(t)) {
       if (t === 'wildRevDraw4') fx.reverses += 1;
       fx.drawTotal += getDrawCount(t);
       fx.drawType = fx.drawType || getDrawType(t);

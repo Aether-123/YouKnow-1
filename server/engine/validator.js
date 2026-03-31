@@ -4,7 +4,7 @@ const { getType, getColor, getValue } = require('./rules');
 
 function getDrawType(type) {
   if (type === 'draw2' || type === 'wildDraw2') return '+2';
-  if (type === 'wild4' || type === 'wildRevDraw4' || type === 'draw4') return '+4';
+  if (type === 'wild4' || type === 'wildRevDraw4' || type === 'draw4' || type === 'voldemort') return '+4';
   return null;
 }
 
@@ -15,6 +15,7 @@ function getDrawCount(type) {
     draw4: 4,
     draw5: 5,
     wild4: 4,
+    voldemort: 4,
     wildDraw2: 2,
     wildRevDraw4: 4,
     wildDraw6: 6,

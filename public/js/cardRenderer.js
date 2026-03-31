@@ -18,7 +18,10 @@ const CR = (() => {
     for (const f of list) {
       const name = f.split('_177')[0]; 
       images[name] = await new Promise((r) => {
-        const i = new Image(); i.onload = ()=>r(i); i.src = '/img/themes/' + f;
+        const i = new Image(); 
+        i.onload = ()=>r(i); 
+        i.onerror = ()=>r(null); // prevent hanging on 404
+        i.src = '/img/themes/' + f;
       });
     }
   }
@@ -133,14 +136,14 @@ const CR = (() => {
       if (color === 'green') img = images.hp_ron;
       if (color === 'yellow') img = images.hp_dumbledore;
       if (img) ctx.drawImage(img,-CW*.35,-CH*.45,CW*.7,CH*.9);
-      ctx.fillStyle='rgba(0,0,0,0.3)'; ctx.fillRect(-CW/2,-CH/2,CW,CH); // slight dim
+      // Removed the dark dimming overlay so the magical portraits pop brightly!
       ctx.restore();
     } else {
       ctx.fillStyle=darkSide?'rgba(0,0,0,.76)':'rgba(255,255,255,.9)'; ctx.fill();
     }
     ctx.restore();
 
-    drawSymbol(ctx,card,bg,darkSide);
+    drawSymbol(ctx,card,bg,darkSide,variant);
     
     // Corners
     const lbl=cornerLabel(card);
@@ -155,11 +158,15 @@ const CR = (() => {
     ctx.restore();
   }
 
-  function drawSymbol(ctx,card,bg,darkSide) {
+  function drawSymbol(ctx,card,bg,darkSide, variant) {
     const {type,value}=card;
     const fc='#fff';
     ctx.textAlign='center'; ctx.textBaseline='middle';
-    ctx.fillStyle=fc; ctx.shadowColor='rgba(0,0,0,.5)'; ctx.shadowBlur=6;
+    ctx.fillStyle=fc; ctx.shadowColor='rgba(0,0,0,.7)'; ctx.shadowBlur=6;
+
+    // Use alpha so Harry Potter art shines through the symbols
+    if (variant === 'hp') ctx.globalAlpha = 0.75;
+    
     if (type==='number') {
       ctx.font=`bold ${CH*.34}px "Bebas Neue",Impact,sans-serif`;
       ctx.fillText(String(value),CW/2,CH/2+2);
@@ -187,6 +194,7 @@ const CR = (() => {
       text(ctx,'ALL',CW/2,CH/2+24,`bold ${CH*.1}px "Bebas Neue",sans-serif`,fc,'center','middle');
     }
     ctx.shadowBlur=0;
+    ctx.globalAlpha = 1.0; // Reset alpha
   }
 
   function drawWild(ctx,card,variant,isLight) {
@@ -303,5 +311,9 @@ const CR = (() => {
     return `rgb(${Math.max(0,r-a)},${Math.max(0,g-a)},${Math.max(0,b-a)})`;
   }
 
-  return {preloadImages,getCanvas,getTexture,getDataURL,HEX,CW,CH};
+  function clearCache() {
+    cache.clear();
+  }
+
+  return {preloadImages,getCanvas,getTexture,getDataURL,HEX,CW,CH,clearCache};
 })();

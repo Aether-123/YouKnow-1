@@ -307,18 +307,14 @@ function renderHand(hand,gs,v){
     if (window.getUnoCardArt) {
       const img = document.createElement('img');
       img.src = window.getUnoCardArt(card, card.id || 0);
-      img.width = 68;
-      img.height = 96;
+      img.width = 100;
+      img.height = 140;
       img.style.display = 'block';
       img.draggable = false;
       wrap.appendChild(img);
     } else {
-      const canvas=CR.getCanvas(card,gs.isLight??true,v,true,68,96);
-      const cv=document.createElement('canvas');
-      cv.width=canvas.width;
-      cv.height=canvas.height;
-      cv.getContext('2d').drawImage(canvas,0,0);
-      wrap.appendChild(cv);
+      const canvas=CR.getCanvas(card,gs.isLight??true,v,true,100,140);
+      wrap.appendChild(canvas);
     }
 
     const playable=myTurn&&isPlayable(card,gs,v);
@@ -448,7 +444,7 @@ function isPlayable(card,gs,v){
 
   // Wilds
   if(['wild','voldemort'].includes(myT)) return true;
-  const restricted=['wild4','wildDraw2','wildDrawColor','wildRevDraw4','wildDraw6','wildDraw10','wildColorRoulette'];
+  const restricted=['wild4','wildDraw2','wildDrawColor','wildRevDraw4','wildDraw6','wildDraw10','wildColorRoulette','voldemort'];
   if(restricted.includes(myT)){
     if(gs.rules?.strictWild4){
       const actId=getActingId();
@@ -457,8 +453,8 @@ function isPlayable(card,gs,v){
       if(hasMatchingColor) return false;
     }
     if(gs.pendingDraw>0&&gs.rules?.stacking){
-      const dv={wild4:4,wildDraw2:2,wildRevDraw4:4,wildDraw6:6,wildDraw10:10};
-      const req={draw1:1,draw2:2,draw4:4,draw5:5,wild4:4,wildDraw2:2,wildRevDraw4:4,wildDraw6:6,wildDraw10:10};
+      const dv={wild4:4,voldemort:4,wildDraw2:2,wildRevDraw4:4,wildDraw6:6,wildDraw10:10};
+      const req={draw1:1,draw2:2,draw4:4,draw5:5,wild4:4,voldemort:4,wildDraw2:2,wildRevDraw4:4,wildDraw6:6,wildDraw10:10};
       const need=req[gs.pendingDrawSource]||0;
       const mine=dv[myT]||0;
       return mine>0 && (need===0 || mine>=need);
@@ -468,7 +464,7 @@ function isPlayable(card,gs,v){
   // Pending draw + stacking: must be draw card
   if(gs.pendingDraw>0&&gs.rules?.stacking){
     const dv={draw1:1,draw2:2,draw4:4,draw5:5};
-    const req={draw1:1,draw2:2,draw4:4,draw5:5,wild4:4,wildDraw2:2,wildRevDraw4:4,wildDraw6:6,wildDraw10:10};
+    const req={draw1:1,draw2:2,draw4:4,draw5:5,wild4:4,voldemort:4,wildDraw2:2,wildRevDraw4:4,wildDraw6:6,wildDraw10:10};
     const need=req[gs.pendingDrawSource]||0;
     const mine=dv[myT]||0;
     return mine>0 && (need===0 || mine>=need);
@@ -719,10 +715,10 @@ function showRoundEnd(data){
         const img = document.createElement('img');
         img.src = window.getUnoCardArt(card);
         img.className = 'board-card';
-        img.width = 40; img.height = 56;
+        img.width = 60; img.height = 84;
         cardsDiv.appendChild(img);
       } else {
-        const cardEl = CR.getCanvas(card, true, hand.variant || 'classic', true, 40, 56);
+        const cardEl = CR.getCanvas(card, true, hand.variant || 'classic', true, 60, 84);
         cardEl.className = 'board-card';
         cardsDiv.appendChild(cardEl);
       }
@@ -890,13 +886,24 @@ function bindAll(){
   $('rend-next').onclick=()=>{ hide('round-end-modal'); emit('nextRound'); };
 
   // Game end
-  $('gend-rematch').onclick=()=>{ hide('game-end-modal'); emit('nextRound'); };
+  $('gend-rematch').onclick=()=>{ hide('game-end-modal'); emit('playAgain'); };
   $('gend-menu').onclick=()=>{ S3D.destroy();sceneReady=false;hide('game-end-modal');showScreen('s-home'); };
 
   // Chat
   $('chat-tog').onclick=()=>$('chat-body').classList.toggle('open');
   $('chat-send').onclick=sendChat;
   $('chat-in').onkeydown=e=>{if(e.key==='Enter')sendChat();};
+}
+
+// ── CHALLENGE STATUS ──────────────────────────────────────────────────────
+function showChallengeStatus() {
+  const targetId = gameState?.awaitingData?.challengeTarget;
+  const p = (roomData?.players || []).find(x => x.id === targetId);
+  const name = p ? p.name : 'Someone';
+  $('chal-modal-title').textContent = `${name} played a +4. Challenge them?`;
+  show('chal-modal');
+  $('chal-yes').onclick = () => { hide('chal-modal'); emit('challenge', { targetId, actingAs: getActingId() }); };
+  $('chal-no').onclick = () => { hide('chal-modal'); emit('drawCards', { actingAs: getActingId() }); };
 }
 
 // ── BOOTSTRAP ─────────────────────────────────────────────────────────────

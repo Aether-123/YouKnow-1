@@ -109,7 +109,7 @@ class UnoGame {
       }
       // Otherwise, start next round
       this.startRound();
-      return this._ok('roundEnd', { winner: playerId, score: this.scores[playerId], roundScore });
+      return this._ok('roundEnd', { winner: playerId, score: this.scores[playerId], roundPoints: roundScore });
     }
 
     if (this._checkMercy()) return this._ok('mercyWin', { winner: this.state.winner });
@@ -205,7 +205,7 @@ class UnoGame {
     const s = this.state;
     const top = s.discardPile[s.discardPile.length - 1];
     const t = getType(top, s.isLight);
-    if (!['wild4','wildDraw2','wildDrawColor'].includes(t)) return this._err('Top card is not challengeable');
+    if (!['wild4','voldemort','wildDraw2','wildDrawColor'].includes(t)) return this._err('Top card is not challengeable');
     if (!s.pendingDraw) return this._err('No active draw penalty to challenge');
 
     const expected = s.awaitingData.challengeTarget;

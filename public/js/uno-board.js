@@ -126,15 +126,7 @@ window.renderUnoBoard = function(gameState, roomData, myId) {
     back: "../back/card_back.svg"
   };
 
-  // Helper to load async assets before rendering the board if needed
-  if (gameState.variant && gameState.variant !== 'classic' && !window._crPreloaded) {
-    CR.preloadImages().then(() => {
-      window._crPreloaded = true;
-      window.renderUnoBoard(gameState, roomData, myId);
-    });
-    return; // Wait for images to load on the first pass
-  }
-
+  // Move getCardArtFilename definition HERE so it is ALWAYS defined before any early returns!
   function getCardArtFilename(card, idx=0) {
     // Handle classic variant
     if (!gameState.variant || gameState.variant === 'classic') {
@@ -158,6 +150,17 @@ window.renderUnoBoard = function(gameState, roomData, myId) {
   }
   
   window.getUnoCardArt = getCardArtFilename;
+
+  // Helper to load async assets before rendering the board if needed
+  if (gameState.variant && gameState.variant !== 'classic' && !window._crPreloaded) {
+    CR.preloadImages().then(() => {
+      window._crPreloaded = true;
+      if (CR.clearCache) CR.clearCache();
+      if (window.refreshHUD) window.refreshHUD();
+      else window.renderUnoBoard(gameState, roomData, myId);
+    });
+    return; // Wait for images to load on the first pass
+  }
 
   function makeCard(card, opts={}) {
     const el = document.createElement('div');
