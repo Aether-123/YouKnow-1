@@ -169,7 +169,7 @@ io.on('connection', socket => {
     const result=room.game.chooseRoulette(actingAs||socket.id, color);
     if(!result.ok){ if(cb)cb({error:result.error}); return; }
     if(cb) cb({ok:true});
-    broadcastEvent(room, result.event, {drawn:result.drawn, target:result.target});
+    broadcastEvent(room, result.event, {color:result.color, totalDrawn:result.totalDrawn});
   });
 
   socket.on('drawCards', ({code, actingAs}, cb) => {

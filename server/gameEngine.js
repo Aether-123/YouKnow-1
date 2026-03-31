@@ -140,15 +140,66 @@ class UnoGame {
     s.currentColor = color;
     s.phase = 'play';
     s.awaitingFrom = null;
-    return this._ok('colorChosen');
+
+    // wildDrawColor: the target must draw until they have no cards of the chosen color
+    if (s.awaitingData && s.awaitingData.wildDrawColorTarget) {
+      const victim = s.awaitingData.wildDrawColorTarget;
+      s.awaitingData.wildDrawColorTarget = null;
+      // Count how many of the victim's cards match the declared color
+      const victimHand = s.hands[victim] || [];
+      const matchCount = victimHand.filter(c => getColor(c, s.isLight) === color).length;
+      // Draw that many cards as penalty (matching count)
+      giveCards(s, victim, Math.max(matchCount, 1));
+      advanceTurn(s, this.playerIds, { skips: 0 });
+    }
+    return this._ok('colorChosen', { drawnColor: color });
   }
 
-  chooseSwap() {
-    return this._err('Swap is not available in this ruleset flow');
+  chooseSwap(playerId, targetId) {
+    const s = this.state;
+    if (s.phase !== 'choose-swap') return this._err('No pending swap');
+    if (s.awaitingFrom !== playerId) return this._err('Not your turn to choose');
+    if (!this.playerIds.includes(targetId)) return this._err('Invalid target');
+    // Swap hands
+    const temp = s.hands[playerId];
+    s.hands[playerId] = s.hands[targetId];
+    s.hands[targetId] = temp;
+    s.phase = 'play';
+    s.awaitingFrom = null;
+    advanceTurn(s, this.playerIds, { skips: 0 });
+    return this._ok('swapped', { from: playerId, to: targetId });
   }
 
-  chooseRoulette() {
-    return this._err('Roulette is not available in this ruleset flow');
+  chooseRoulette(playerId, color) {
+    const s = this.state;
+    if (s.phase !== 'choose-roulette') return this._err('No pending roulette');
+    if (s.awaitingFrom !== playerId) return this._err('Not your turn');
+    const allColors = s.isLight ? LIGHT_COLORS : DARK_COLORS;
+    if (!allColors.includes(color)) return this._err('Invalid color');
+
+    // Wild Color Roulette: everyone ELSE draws cards of that color from the deck until they hit that color
+    // Official rule: each other player draws until they draw a card of the chosen color, keeping all drawn cards
+    let totalDrawn = 0;
+    this.playerIds.forEach(pid => {
+      if (pid === playerId) return;
+      let drawn = 0;
+      while (true) {
+        reshuffleIfNeeded(s);
+        if (!s.deck.length) break;
+        const card = s.deck.pop();
+        s.hands[pid].push(card);
+        drawn++;
+        totalDrawn++;
+        if (getColor(card, s.isLight) === color) break;
+        if (drawn >= 20) break; // safety cap
+      }
+    });
+
+    s.currentColor = color;
+    s.phase = 'play';
+    s.awaitingFrom = null;
+    advanceTurn(s, this.playerIds, { skips: 0 });
+    return this._ok('rouletteResult', { color, totalDrawn });
   }
 
   pass(playerId) {

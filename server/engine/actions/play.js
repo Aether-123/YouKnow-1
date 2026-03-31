@@ -90,10 +90,14 @@ function applyPlay(game, playerId, cardIds, chosenColor) {
       const victim = peekNextPlayer(s, game.playerIds, playerId, { reverses:fx.reverses, skips:fx.skips });
       
       if (t === 'wildDrawColor') {
-        s.awaitingData.wildDrawColorTarget = victim; 
+        // Must choose a color first; then victim draws cards of that color
+        s.awaitingData.wildDrawColorTarget = victim;
+        s.phase = 'choose-color';
+        s.awaitingFrom = playerId;
       } else {
+        // Roulette: current player chooses a color; everyone else draws until hitting that color
         s.phase = 'choose-roulette';
-        s.awaitingFrom = victim;
+        s.awaitingFrom = playerId;
       }
     }
 
@@ -117,11 +121,18 @@ function applyPlay(game, playerId, cardIds, chosenColor) {
 
   const last = cards[cards.length - 1];
   const lastType = getType(last, s.isLight);
-  if (isWild(lastType)) s.currentColor = chosenColor;
+  // For non-wildDrawColor/roulette wilds, set color immediately from chosenColor
+  if (isWild(lastType) && lastType !== 'wildDrawColor' && lastType !== 'wildColorRoulette') {
+    s.currentColor = chosenColor;
+  }
 
   if (hand.length === 0) {
     return game.endRound(playerId);
   }
+
+  // If awaiting a choice (color/swap/roulette), don't advance turn yet — the choice handler will
+  const awaitingChoice = ['choose-color', 'choose-swap', 'choose-roulette'].includes(s.phase);
+  if (awaitingChoice) return { ok:true, event:'played' };
 
   // Apply draw effects
   if (fx.drawTotal > 0) {
@@ -145,4 +156,4 @@ function applyPlay(game, playerId, cardIds, chosenColor) {
   return { ok:true, event:'played' };
 }
 
-module.exports = { applyPlay };
+module.exports = { applyPlay };

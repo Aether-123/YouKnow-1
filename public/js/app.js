@@ -181,6 +181,8 @@ function refreshHUD(){
     window.onCardClick = onCardClick;
     window.renderUnoBoard(gs, roomData, myId);
   }
+  // Open any pending phase modals (color/swap/roulette) if it's our turn
+  handlePhase(gs);
 
   // Side badge
   const sb=$('side-badge');
@@ -401,7 +403,8 @@ function bindDragThrow(wrap,card,gs,v){
 
 // ── PLAYABILITY CHECK (client-side) ──────────────────────────────────────
 function isPlayable(card,gs,v){
-  const top=gs.discardTop;
+  // discardTop may not be pre-computed; always derive from discardPile
+  const top = gs.discardTop || (gs.discardPile && gs.discardPile[gs.discardPile.length-1]) || null;
   const isLight=gs.isLight??true;
   const gt=c=>v==='flip'?(isLight?c.light?.type:c.dark?.type):c.type;
   const gc=c=>v==='flip'?(isLight?c.light?.color:c.dark?.color):c.color;
@@ -514,10 +517,11 @@ async function submitPlay(cardIds,color,gs,v){
     }
   }
 
-  const wilds=['wild','wild4','voldemort','wildDraw2','wildDrawColor','wildRevDraw4','wildDraw6','wildDraw10','wildColorRoulette'];
-  const hasWild=cards.some(c=>wilds.includes(gt(c)));
+  // These wild types handle color via a separate modal after the server responds
+  const colorRequiredInline=['wild','wild4','voldemort','wildDraw2','wildRevDraw4','wildDraw6','wildDraw10'];
+  const hasInlineWild=cards.some(c=>colorRequiredInline.includes(gt(c)));
 
-  if(hasWild&&!color){
+  if(hasInlineWild&&!color){
     color=await pickColor(isLight,v);
     if(!color) return; // cancelled
   }
@@ -637,9 +641,22 @@ function onGameEvent(data){
   }
 
   switch(data.event){
-    case 'roundStart': case 'played': case 'colorChosen': case 'swapped': case 'passed':
+    case 'roundStart': case 'played': case 'colorChosen': case 'swapped': case 'passed': case 'rouletteResult':
       canPlayDrawn=null; selectedIds=[];
       closeModal('color-modal'); closeModal('swap-modal'); closeModal('roulette-modal');
+      // After 'played', check if the gameState requires a choice modal
+      if (gs?.phase === 'choose-color' && gs?.awaitingFrom === getActingId()) {
+        setTimeout(() => openColorModal(gs), 80);
+        return;
+      }
+      if (gs?.phase === 'choose-roulette' && gs?.awaitingFrom === getActingId()) {
+        setTimeout(() => openRouletteModal(gs), 80);
+        return;
+      }
+      if (gs?.phase === 'choose-swap' && gs?.awaitingFrom === getActingId()) {
+        setTimeout(() => openSwapModal(gs), 80);
+        return;
+      }
       break;
     case 'drew':
       if(data.data?.canPlay){ canPlayDrawn=data.data.canPlay; setStatus('✅ Drew a playable card — play or pass!','g',7000); }
@@ -650,11 +667,11 @@ function onGameEvent(data){
       if(data.data?.guilty) setStatus(`✅ Challenge success! ${playerName(data.data.target)} draws!`,'g',3000);
       else setStatus(`❌ Challenge failed! ${playerName(data.data.challenger)} draws extra!`,'w',3000);
       break;
-    case 'flipped': setStatus(`⇅ FLIP! Now on ${gs.isLight?'LIGHT':'DARK'} side!`,'',3000); break;
-    case 'rouletteResolved': setStatus(`🎰 Roulette: ${playerName(data.data?.target)} drew ${data.data?.drawn?.length??'?'} cards!`,'w',3000); break;
-    case 'needColor': break;
-    case 'needSwap': break;
-    case 'needRoulette': break;
+    case 'flipped': setStatus(`⇅ FLIP! Now on ${gs.isLight?'☀ LIGHT':'🌙 DARK'} side!`,'info',4000); break;
+    case 'rouletteResult': setStatus(`🎰 Roulette! Everyone drew until ${data.data?.color?.toUpperCase()}! (${data.data?.totalDrawn} total)`, 'w', 4000); break;
+    case 'needColor': openColorModal(gs); return;
+    case 'needSwap':  openSwapModal(gs); return;
+    case 'needRoulette': openRouletteModal(gs); return;
     case 'roundEnd':
       showRoundEnd(data.data); return;
   }
