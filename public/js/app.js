@@ -44,6 +44,9 @@ function connectSocket(){
   socket.on('roomUpdate', onRoomUpdate);
   socket.on('gameEvent',  onGameEvent);
   socket.on('chat',       onChat);
+  socket.on('playerEliminated', data=>{
+    setStatus(`⚡ ${data.name} disconnected and was eliminated!`, 'w', 4000);
+  });
 }
 
 // ── HOME SCREEN ───────────────────────────────────────────────────────────
@@ -173,6 +176,9 @@ function refreshHUD(){
 
   // Render the new UNO board
   if (window.renderUnoBoard) {
+    // Expose helpers for the board renderer
+    window.isPlayable  = isPlayable;
+    window.onCardClick = onCardClick;
     window.renderUnoBoard(gs, roomData, myId);
   }
 

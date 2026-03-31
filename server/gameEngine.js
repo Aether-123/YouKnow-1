@@ -306,6 +306,33 @@ class UnoGame {
       log: s.log.slice(-5)
     };
   }
+  forceRemovePlayer(playerId) {
+    const s = this.state;
+    if (!this.playerIds.includes(playerId)) return false;
+
+    // Transfer hand to discard pile
+    if (s.hands[playerId]) {
+      s.hands[playerId].forEach(c => s.discardPile.unshift(c));
+      s.hands[playerId] = [];
+    }
+    
+    // Mark them as universally knocked out so nextActiveIndex skips them
+    if (!s.knockedOut.includes(playerId)) {
+      s.knockedOut.push(playerId);
+    }
+    
+    // If it is currently this player's turn, we must forcefully advance it
+    if (s.currentPlayer === playerId) {
+      // Clear pending draws to avoid locking the next player implicitly if the dropped player was holding a wild4
+      s.pendingDraw = 0;
+      s.pendingDrawType = null;
+      s.pendingDrawSource = null;
+      s.awaitingData = {};
+      const { advanceTurn } = require('./engine/stateManager');
+      advanceTurn(s, this.playerIds, { skips: 0 });
+    }
+    return true;
+  }
 
   playerView(playerId) {
     const full = this._fullState();

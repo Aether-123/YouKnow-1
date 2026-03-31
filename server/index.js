@@ -247,18 +247,31 @@ io.on('connection', socket => {
     if(!room) return;
     const player=room.players.find(p=>p.id===socket.id);
     if(player) player.connected=false;
-    // Start 2-minute grace timer
+    // Start 20-second grace timer
     if (player && room.status !== 'lobby') {
       const timer = setTimeout(() => {
-        // After 2 minutes, move to spectators if not reconnected
+        // After 20s, move to spectators and remove from active game
         const idx = room.players.findIndex(p=>p.id===socket.id);
         if(idx !== -1) {
           if (!room.spectators) room.spectators = [];
-          room.spectators.push({id:player.id, name:player.name||'Spectator'});
+          room.spectators.push({id:player.id, name:player.name+'(disconnected)'});
           room.players.splice(idx,1);
         }
+        // Eject from live game engine to prevent turn freeze
+        if (room.game && room.game.forceRemovePlayer) {
+          room.game.forceRemovePlayer(socket.id);
+        }
+        io.to(room.code).emit('playerEliminated', { playerId: socket.id, name: player.name });
         broadcastRoom(room);
-      }, 2*60*1000);
+        // If only one active player remains, end round
+        if (room.game) {
+          const active = room.game.playerIds.filter(pid => !room.game.state.knockedOut.includes(pid));
+          if (active.length === 1) {
+            const result = room.game.endRound(active[0]);
+            broadcastEvent(room, 'roundEnd', { winner: active[0], roundPoints: result?.roundPoints, scores: result?.state?.scores });
+          }
+        }
+      }, 20 * 1000);
       disconnectTimers.set(socket.id, timer);
     }
     if(room.status==='lobby') {

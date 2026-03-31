@@ -1,3 +1,8 @@
+/* Global touch-action: remove 300ms iOS/Android tap delay */
+button, a, .card-wrap, .uno-card, .board-hand-zone, .caught-btn, .uno-btn, .draw-btn, .cbtn, .mbtn {
+  touch-action: manipulation;
+}
+
 /* Ensure draw pile is left, discard pile is right */
 .table-felt {
   display: flex;
@@ -284,32 +289,71 @@
   position: relative;
   width: 72px; height: 106px;
 }
-.hand-row, .hand-col {
+/* ── Polar Board Layout ──────────────────────────────────────── */
+.player-hands {
   position: absolute;
-  z-index: 20;
+  inset: 0;
+  pointer-events: none;
+}
+.board-hand-zone {
+  position: absolute;
   display: flex;
-  gap: 8px;
-}
-.player-hand {
-  left: 50%; top: calc(50% + 248px);
-  transform: translateX(-50%);
   flex-direction: row;
+  align-items: center;
+  pointer-events: auto;
+  z-index: 20;
 }
-.opp-top {
-  left: 50%; top: calc(50% - 268px);
-  transform: translateX(-50%) rotateZ(180deg);
+
+/* Opponent badge */
+.opp-hand-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 6px;
+  background: rgba(0,0,0,0.45);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  backdrop-filter: blur(6px);
+  min-width: 52px;
+  transition: box-shadow 0.2s;
+}
+.opp-hand-badge.opp-active {
+  border-color: #FCDE5A;
+  box-shadow: 0 0 12px #FCDE5A88;
+}
+.opp-name-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #ccc;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.opp-name-label.active { color: #FCDE5A; }
+.opp-card-stack {
+  display: flex;
   flex-direction: row;
+  align-items: center;
+  height: 36px;
 }
-.opp-left {
-  left: calc(50% - 286px); top: 50%;
-  transform: translateY(-50%) rotateZ(90deg);
-  flex-direction: column;
+.mini-card-back {
+  width: 22px; height: 32px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #1a1a6e 0%, #3a1060 100%);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  box-shadow: 1px 1px 4px #0007;
+  flex-shrink: 0;
 }
-.opp-right {
-  left: calc(50% + 250px); top: 50%;
-  transform: translateY(-50%) rotateZ(-90deg);
-  flex-direction: column;
+.opp-count-label {
+  font-size: 9px;
+  color: #aaa;
+  font-weight: 600;
 }
+
+
 .uno-card {
   width: 72px; height: 106px;
   border-radius: 5px;

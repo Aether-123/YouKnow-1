@@ -1,28 +1,17 @@
-// Score Modal UI
-function renderScoreModal(scores, players, winnerId = null) {
+// uno-board.js — High-performance UNO board renderer with 8-player polar layout
+'use strict';
+
+// ── Score Modal ───────────────────────────────────────────────────────────────
+function renderScoreModal(scores, players, winnerId) {
   let modal = document.getElementById('score-modal');
   if (!modal) {
     modal = document.createElement('div');
     modal.id = 'score-modal';
     modal.innerHTML = `<div class="score-header">Scores <span id="score-collapse">⮟</span></div><div class="score-list"></div>`;
     document.body.appendChild(modal);
-    // Collapse/expand logic
-    modal.querySelector('#score-collapse').onclick = () => {
-      modal.classList.toggle('collapsed');
-    };
+    modal.querySelector('#score-collapse').onclick = () => modal.classList.toggle('collapsed');
   }
-    // Tabs for each player
-    const tabs = modal.querySelector('.score-tabs');
-    tabs.innerHTML = '';
-    players.forEach((p, idx) => {
-      const tab = document.createElement('div');
-      tab.className = 'score-tab';
-      tab.textContent = p.name || `P${idx+1}`;
-      tab.title = `Score: ${scores[p.id] || 0}`;
-      tabs.appendChild(tab);
-    });
-    // Score list
-    const list = modal.querySelector('.score-list');
+  const list = modal.querySelector('.score-list');
   list.innerHTML = '';
   players.forEach(p => {
     const row = document.createElement('div');
@@ -30,166 +19,83 @@ function renderScoreModal(scores, players, winnerId = null) {
     row.innerHTML = `<span class="score-name">${p.name || p.id}</span><span class="score-val">${scores[p.id] || 0}</span>`;
     list.appendChild(row);
   });
-  if (winnerId) {
-    const winMsg = document.createElement('div');
-    winMsg.className = 'score-winner-msg';
-    winMsg.textContent = `${players.find(p=>p.id===winnerId)?.name || winnerId} wins!`;
-    list.appendChild(winMsg);
-  }
 }
-// uno-board.js — Renders the UNO board scene and handles card hover/UNO button
 
-// uno-board.js now only exports a renderUnoBoard function for dynamic game state rendering.
-window.renderUnoBoard = function(gameState, roomData, myId) {
-  // Sound assets (UNO and Caught You)
-  if (!window._unoSoundsLoaded) {
-    window._unoSoundsLoaded = true;
-    window._unoSoundUNO = new Audio('/sounds/uno.mp3');
-    window._unoSoundCaught = new Audio('/sounds/caught.mp3');
+// ── Card Art Helper ───────────────────────────────────────────────────────────
+const CARD_ART_PATH = '/cards/classic/fronts/';
+const CARD_MANIFEST = {
+  red_0:'red_0.svg', red_1:['red_1_1.svg','red_1_2.svg'], red_2:['red_2_1.svg','red_2_2.svg'],
+  red_3:['red_3_1.svg','red_3_2.svg'], red_4:['red_4_1.svg','red_4_2.svg'], red_5:['red_5_1.svg','red_5_2.svg'],
+  red_6:['red_6_1.svg','red_6_2.svg'], red_7:['red_7_1.svg','red_7_2.svg'], red_8:['red_8_1.svg','red_8_2.svg'],
+  red_9:['red_9_1.svg','red_9_2.svg'], red_skip:['red_skip_1.svg','red_skip_2.svg'],
+  red_reverse:['red_reverse_1.svg','red_reverse_2.svg'], red_draw2:['red_draw2_1.svg','red_draw2_2.svg'],
+  yellow_0:'yellow_0.svg', yellow_1:['yellow_1_1.svg','yellow_1_2.svg'], yellow_2:['yellow_2_1.svg','yellow_2_2.svg'],
+  yellow_3:['yellow_3_1.svg','yellow_3_2.svg'], yellow_4:['yellow_4_1.svg','yellow_4_2.svg'], yellow_5:['yellow_5_1.svg','yellow_5_2.svg'],
+  yellow_6:['yellow_6_1.svg','yellow_6_2.svg'], yellow_7:['yellow_7_1.svg','yellow_7_2.svg'], yellow_8:['yellow_8_1.svg','yellow_8_2.svg'],
+  yellow_9:['yellow_9_1.svg','yellow_9_2.svg'], yellow_skip:['yellow_skip_1.svg','yellow_skip_2.svg'],
+  yellow_reverse:['yellow_reverse_1.svg','yellow_reverse_2.svg'], yellow_draw2:['yellow_draw2_1.svg','yellow_draw2_2.svg'],
+  green_0:'green_0.svg', green_1:['green_1_1.svg','green_1_2.svg'], green_2:['green_2_1.svg','green_2_2.svg'],
+  green_3:['green_3_1.svg','green_3_2.svg'], green_4:['green_4_1.svg','green_4_2.svg'], green_5:['green_5_1.svg','green_5_2.svg'],
+  green_6:['green_6_1.svg','green_6_2.svg'], green_7:['green_7_1.svg','green_7_2.svg'], green_8:['green_8_1.svg','green_8_2.svg'],
+  green_9:['green_9_1.svg','green_9_2.svg'], green_skip:['green_skip_1.svg','green_skip_2.svg'],
+  green_reverse:['green_reverse_1.svg','green_reverse_2.svg'], green_draw2:['green_draw2_1.svg','green_draw2_2.svg'],
+  blue_0:'blue_0.svg', blue_1:['blue_1_1.svg','blue_1_2.svg'], blue_2:['blue_2_1.svg','blue_2_2.svg'],
+  blue_3:['blue_3_1.svg','blue_3_2.svg'], blue_4:['blue_4_1.svg','blue_4_2.svg'], blue_5:['blue_5_1.svg','blue_5_2.svg'],
+  blue_6:['blue_6_1.svg','blue_6_2.svg'], blue_7:['blue_7_1.svg','blue_7_2.svg'], blue_8:['blue_8_1.svg','blue_8_2.svg'],
+  blue_9:['blue_9_1.svg','blue_9_2.svg'], blue_skip:['blue_skip_1.svg','blue_skip_2.svg'],
+  blue_reverse:['blue_reverse_1.svg','blue_reverse_2.svg'], blue_draw2:['blue_draw2_1.svg','blue_draw2_2.svg'],
+  wild_wild:['wild_1.svg','wild_2.svg','wild_3.svg','wild_4.svg'],
+  wild_draw4:['wild_draw4_1.svg','wild_draw4_2.svg','wild_draw4_3.svg','wild_draw4_4.svg'],
+  back:'../back/card_back.svg'
+};
+
+function getCardArtFilename(card, idx, gameState) {
+  if (!gameState.variant || gameState.variant === 'classic') {
+    if (card.back) return CARD_ART_PATH + CARD_MANIFEST['back'];
+    let key = card.color + '_';
+    if (card.type === 'number') key += card.value;
+    else if (card.type === 'draw2' || card.type === '+2') key += 'draw2';
+    else if (card.type === 'skip') key += 'skip';
+    else if (card.type === 'reverse') key += 'reverse';
+    else if (card.type === 'wild') key = 'wild_wild';
+    else if (card.type === 'wild4' || card.type === 'wild_draw4') key = 'wild_draw4';
+    else key += (card.type || card.value || 'unknown');
+    const entry = CARD_MANIFEST[key];
+    if (Array.isArray(entry)) return CARD_ART_PATH + entry[(idx || 0) % entry.length];
+    return CARD_ART_PATH + (entry || CARD_MANIFEST['back']);
   }
-  // Track previous game state for animation diffing
-  if (!window._unoBoardPrevState) window._unoBoardPrevState = null;
-  const prevState = window._unoBoardPrevState;
-  // Track selected cards for multi-play (board-local, not global)
-  if (!window._unoBoardSelectedIds) window._unoBoardSelectedIds = [];
-  const selectedIds = window._unoBoardSelectedIds;
-  const COLORS = {
-    red:   '#E24B4A',
-    blue:  '#2244cc',
-    green: '#22aa44',
-    yellow:'#EF9F27',
-    wild:  '#13134a',
-    black: '#13134a'
-  };
-  // Card art config
-  const CARD_ART_PATH = '/cards/classic/fronts/';
-  const CARD_MANIFEST = {
-    // Red
-    red_0: "red_0.svg",
-    red_1: ["red_1_1.svg", "red_1_2.svg"],
-    red_2: ["red_2_1.svg", "red_2_2.svg"],
-    red_3: ["red_3_1.svg", "red_3_2.svg"],
-    red_4: ["red_4_1.svg", "red_4_2.svg"],
-    red_5: ["red_5_1.svg", "red_5_2.svg"],
-    red_6: ["red_6_1.svg", "red_6_2.svg"],
-    red_7: ["red_7_1.svg", "red_7_2.svg"],
-    red_8: ["red_8_1.svg", "red_8_2.svg"],
-    red_9: ["red_9_1.svg", "red_9_2.svg"],
-    red_skip: ["red_skip_1.svg", "red_skip_2.svg"],
-    red_reverse: ["red_reverse_1.svg", "red_reverse_2.svg"],
-    red_draw2: ["red_draw2_1.svg", "red_draw2_2.svg"],
-    // Yellow
-    yellow_0: "yellow_0.svg",
-    yellow_1: ["yellow_1_1.svg", "yellow_1_2.svg"],
-    yellow_2: ["yellow_2_1.svg", "yellow_2_2.svg"],
-    yellow_3: ["yellow_3_1.svg", "yellow_3_2.svg"],
-    yellow_4: ["yellow_4_1.svg", "yellow_4_2.svg"],
-    yellow_5: ["yellow_5_1.svg", "yellow_5_2.svg"],
-    yellow_6: ["yellow_6_1.svg", "yellow_6_2.svg"],
-    yellow_7: ["yellow_7_1.svg", "yellow_7_2.svg"],
-    yellow_8: ["yellow_8_1.svg", "yellow_8_2.svg"],
-    yellow_9: ["yellow_9_1.svg", "yellow_9_2.svg"],
-    yellow_skip: ["yellow_skip_1.svg", "yellow_skip_2.svg"],
-    yellow_reverse: ["yellow_reverse_1.svg", "yellow_reverse_2.svg"],
-    yellow_draw2: ["yellow_draw2_1.svg", "yellow_draw2_2.svg"],
-    // Green
-    green_0: "green_0.svg",
-    green_1: ["green_1_1.svg", "green_1_2.svg"],
-    green_2: ["green_2_1.svg", "green_2_2.svg"],
-    green_3: ["green_3_1.svg", "green_3_2.svg"],
-    green_4: ["green_4_1.svg", "green_4_2.svg"],
-    green_5: ["green_5_1.svg", "green_5_2.svg"],
-    green_6: ["green_6_1.svg", "green_6_2.svg"],
-    green_7: ["green_7_1.svg", "green_7_2.svg"],
-    green_8: ["green_8_1.svg", "green_8_2.svg"],
-    green_9: ["green_9_1.svg", "green_9_2.svg"],
-    green_skip: ["green_skip_1.svg", "green_skip_2.svg"],
-    green_reverse: ["green_reverse_1.svg", "green_reverse_2.svg"],
-    green_draw2: ["green_draw2_1.svg", "green_draw2_2.svg"],
-    // Blue
-    blue_0: "blue_0.svg",
-    blue_1: ["blue_1_1.svg", "blue_1_2.svg"],
-    blue_2: ["blue_2_1.svg", "blue_2_2.svg"],
-    blue_3: ["blue_3_1.svg", "blue_3_2.svg"],
-    blue_4: ["blue_4_1.svg", "blue_4_2.svg"],
-    blue_5: ["blue_5_1.svg", "blue_5_2.svg"],
-    blue_6: ["blue_6_1.svg", "blue_6_2.svg"],
-    blue_7: ["blue_7_1.svg", "blue_7_2.svg"],
-    blue_8: ["blue_8_1.svg", "blue_8_2.svg"],
-    blue_9: ["blue_9_1.svg", "blue_9_2.svg"],
-    blue_skip: ["blue_skip_1.svg", "blue_skip_2.svg"],
-    blue_reverse: ["blue_reverse_1.svg", "blue_reverse_2.svg"],
-    blue_draw2: ["blue_draw2_1.svg", "blue_draw2_2.svg"],
-    // Wilds
-    wild_wild: ["wild_1.svg", "wild_2.svg", "wild_3.svg", "wild_4.svg"],
-    wild_draw4: ["wild_draw4_1.svg", "wild_draw4_2.svg", "wild_draw4_3.svg", "wild_draw4_4.svg"],
-    back: "../back/card_back.svg"
-  };
+  return typeof CR !== 'undefined' ? CR.getDataURL(card, gameState.isLight, gameState.variant, !card.back) : '';
+}
 
-  // Move getCardArtFilename definition HERE so it is ALWAYS defined before any early returns!
-  function getCardArtFilename(card, idx=0) {
-    // Handle classic variant
-    if (!gameState.variant || gameState.variant === 'classic') {
-      if (card.back) return CARD_ART_PATH + CARD_MANIFEST['back'];
-      let key = card.color + '_';
-      if (card.type === 'number') key += card.value;
-      else if (card.type === 'draw2' || card.type === '+2') key += 'draw2';
-      else if (card.type === 'skip') key += 'skip';
-      else if (card.type === 'reverse') key += 'reverse';
-      else if (card.type === 'wild') key = 'wild_wild';
-      else if (card.type === 'wild4' || card.type === 'wild_draw4') key = 'wild_draw4';
-      else key += card.type || card.value || 'unknown';
-      const entry = CARD_MANIFEST[key];
-      if (Array.isArray(entry)) return CARD_ART_PATH + entry[idx % entry.length];
-      return CARD_ART_PATH + (entry || CARD_MANIFEST['back']);
-    }
+// ── Polar Seat Position Calculator ────────────────────────────────────────────
+// Returns {x, y, angle(deg)} for each player seat around an oval.
+// Player 0 (me) is always at the bottom center.
+function getSeatPos(seatIdx, totalSeats) {
+  // Distribute seats evenly around an ellipse. Seat 0 = bottom (6 o'clock = 90°)
+  const startAngle = Math.PI / 2; // 90deg = bottom
+  const angleDeg = (seatIdx / totalSeats) * 360;
+  const angleRad = startAngle + (seatIdx / totalSeats) * 2 * Math.PI;
+  // Oval radii as % of viewport area - responsive via CSS variables
+  const rx = 42; // horizontal % of world width
+  const ry = 36; // vertical % of world height
+  const x = 50 + rx * Math.cos(angleRad);   // % from left
+  const y = 50 + ry * Math.sin(angleRad);   // % from top
+  // Rotation: cards face inward toward center
+  const rot = angleDeg; // pointing out means card top aims outward
+  return { x, y, rot: angleDeg + 180 }; // +180 to flip inward
+}
 
-    // High fidelity generative render
-    const faceUp = !card.back;
-    return CR.getDataURL(card, gameState.isLight, gameState.variant, faceUp);
-  }
-  
-  window.getUnoCardArt = getCardArtFilename;
-
-  // Helper to load async assets before rendering the board if needed
-  if (gameState.variant && gameState.variant !== 'classic' && !window._crPreloaded) {
-    CR.preloadImages().then(() => {
-      window._crPreloaded = true;
-      if (CR.clearCache) CR.clearCache();
-      if (window.refreshHUD) window.refreshHUD();
-      else window.renderUnoBoard(gameState, roomData, myId);
-    });
-    return; // Wait for images to load on the first pass
-  }
-
-  function makeCard(card, opts={}) {
-    const el = document.createElement('div');
-    el.className = 'uno-card' + (opts.faceup ? ' faceup' : '') + (opts.flipped ? ' flipped' : '');
-    el.style.transform = opts.transform || '';
-    const img = document.createElement('img');
-    img.draggable = false;
-    img.style.width = '100%';
-    img.style.height = '100%';
-    img.style.display = 'block';
-    if (!opts.faceup) {
-      card = { back: true };
-    }
-    img.src = getCardArtFilename(card, card.id || 0);
-    el.appendChild(img);
-    return el;
-  }
-
-  // Clear and build board
-  const world = document.getElementById('uno-world');
-  if (!world) return;
-  // Table and piles
+// ── DOM Bootstrapper: only runs ONCE ─────────────────────────────────────────
+function ensureWorldDOM(world) {
+  if (world.dataset.initialized) return;
+  world.dataset.initialized = '1';
   world.innerHTML = `
     <div class="uno-table">
       <div class="table-underside"></div>
       <div class="table-felt-ring"></div>
       <div class="table-felt">
         <div class="table-watermark">UNO</div>
-        <div class="table-arrow">↻</div>
+        <div class="table-arrow" id="board-direction-arrow">↻</div>
         <div class="discard-pile"><div class="pile-label">DISCARD</div><div class="discard-stack"></div></div>
         <div class="draw-pile"><div class="pile-label">DRAW</div><div class="draw-stack"></div></div>
       </div>
@@ -198,249 +104,383 @@ window.renderUnoBoard = function(gameState, roomData, myId) {
       <div class="table-leg leg3"></div>
       <div class="table-leg leg4"></div>
     </div>
-    <div class="player-hands"></div>
-    <div class="hud-pill hud-turn"></div>
-    <div class="hud-pill hud-timer"></div>
-    <div class="hud-pill hud-hint">Hover your cards to lift them</div>
+    <div class="player-hands" id="board-player-hands"></div>
+    <div class="hud-pill hud-turn" id="board-hud-turn"></div>
+    <div class="hud-pill hud-timer" id="board-hud-timer"></div>
     <div class="hud-pill hud-wild-color" id="wild-color-pill" style="display:none"></div>
-    <button class="uno-btn board-uno-btn" style="display:none; position:absolute; right:38px; bottom:38px;"></button>
-    <button class="draw-btn board-draw-btn" style="display:none !important; position:absolute; left:38px; bottom:38px;"></button>
+    <button class="uno-btn board-uno-btn" id="board-uno-btn" style="display:none"></button>
+    <button class="draw-btn board-draw-btn" id="board-draw-btn" style="display:none"></button>
   `;
+}
 
-  // Player hands (all around the table)
-  const handsDiv = world.querySelector('.player-hands');
+// ── Main Render Function ──────────────────────────────────────────────────────
+window.renderUnoBoard = function(gameState, roomData, myId) {
+  const CHEX = {red:'#E53935',blue:'#1565C0',green:'#2E7D32',yellow:'#F9A825',
+                pink:'#C2185B',teal:'#00695C',orange:'#E64A19',purple:'#6A1B9A'};
+
+  // Preload images for non-classic variants
+  if (gameState.variant && gameState.variant !== 'classic' && !window._crPreloaded) {
+    if (typeof CR !== 'undefined') {
+      CR.preloadImages().then(() => {
+        window._crPreloaded = true;
+        if (CR.clearCache) CR.clearCache();
+        window.renderUnoBoard(gameState, roomData, myId);
+      });
+    }
+    return;
+  }
+
+  // Expose card art fn globally for hand renderer
+  window.getUnoCardArt = (card, idx) => getCardArtFilename(card, idx, gameState);
+
+  // Sound assets
+  if (!window._unoSoundsLoaded) {
+    window._unoSoundsLoaded = true;
+    window._unoSoundUNO = new Audio('/sounds/uno.mp3');
+    window._unoSoundCaught = new Audio('/sounds/caught.mp3');
+  }
+
+  const world = document.getElementById('uno-world');
+  if (!world) return;
+
+  // Bootstrap DOM structure once
+  ensureWorldDOM(world);
+
+  // ── Selection state ────────────────────────────────────────────────────────
+  if (!window._unoBoardSelectedIds) window._unoBoardSelectedIds = [];
+  const selectedIds = window._unoBoardSelectedIds;
+  const prevState = window._unoBoardPrevState;
+
+  // ── Direction Arrow ────────────────────────────────────────────────────────
+  const arrowEl = document.getElementById('board-direction-arrow');
+  if (arrowEl) arrowEl.textContent = (gameState.direction === -1) ? '↺' : '↻';
+
+  // ── Wild Color Pill ────────────────────────────────────────────────────────
+  const wildColorPill = document.getElementById('wild-color-pill');
+  const discards = gameState.discardPile || [];
+  const lastCard = discards[discards.length - 1];
+  const wildTypes = ['wild','wild4','voldemort','wildDraw2','wildDrawColor','wildRevDraw4','wildDraw6','wildDraw10','wildColorRoulette'];
+  if (lastCard && wildTypes.includes(lastCard.type) && gameState.currentColor) {
+    wildColorPill.style.display = '';
+    wildColorPill.textContent = `Color: ${gameState.currentColor.toUpperCase()}`;
+    wildColorPill.style.background = CHEX[gameState.currentColor] || '#555';
+    wildColorPill.style.color = '#fff';
+    wildColorPill.style.fontWeight = 'bold';
+    wildColorPill.style.boxShadow = `0 0 14px 3px ${CHEX[gameState.currentColor] || '#555'}88`;
+  } else {
+    wildColorPill.style.display = 'none';
+  }
+
+  // ── Player Hands (Polar Layout) ────────────────────────────────────────────
+  const handsDiv = document.getElementById('board-player-hands');
   const players = roomData?.players || [];
-  const myIndex = players.findIndex(p=>p.id===myId);
-  // Arrange players: me at bottom, others clockwise
+  const isSpectator = !players.find(p => p.id === myId);
+  const myIndex = players.findIndex(p => p.id === myId);
+  // Seat zero = me, others in clockwise order
   const seatOrder = [];
-  for(let i=0;i<players.length;i++) seatOrder.push(players[(myIndex+i)%players.length]);
-  seatOrder.forEach((p, idx) => {
+  const base = myIndex >= 0 ? myIndex : 0;
+  for (let i = 0; i < players.length; i++) seatOrder.push(players[(base + i) % players.length]);
+
+  const totalSeats = seatOrder.length;
+
+  // Build per-player hand sections using data-pid to avoid full rebuilds
+  seatOrder.forEach((p, seatIdx) => {
     const hand = (gameState.hands && gameState.hands[p.id]) || [];
     const isMe = p.id === myId;
-    const handDiv = document.createElement('div');
-    handDiv.className = 'hand-row';
-    handDiv.style.position = 'absolute';
-    // Positioning: bottom, top, left, right, then diagonals if >4
-    if(idx===0) { handDiv.style.left='50%'; handDiv.style.top='calc(50% + 248px)'; handDiv.style.transform='translateX(-50%)'; handDiv.style.flexDirection='row'; }
-    else if(idx===1) { handDiv.style.left='50%'; handDiv.style.top='calc(50% - 268px)'; handDiv.style.transform='translateX(-50%) rotateZ(180deg)'; handDiv.style.flexDirection='row'; }
-    else if(idx===2) { handDiv.style.left='calc(50% - 286px)'; handDiv.style.top='50%'; handDiv.style.transform='translateY(-50%) rotateZ(90deg)'; handDiv.style.flexDirection='column'; }
-    else if(idx===3) { handDiv.style.left='calc(50% + 250px)'; handDiv.style.top='50%'; handDiv.style.transform='translateY(-50%) rotateZ(-90deg)'; handDiv.style.flexDirection='column'; }
-    else { handDiv.style.display='none'; }
-    handDiv.style.gap = '8px';
-    // Player label
-    const label = document.createElement('div');
-    label.textContent = p.name || `Player ${idx+1}`;
-    label.style.fontSize = '12px';
-    label.style.color = isMe ? '#fff' : '#FCDE5A';
-    label.style.textAlign = 'center';
-    label.style.marginBottom = '2px';
-    handDiv.appendChild(label);
-    // Cards
-    // For animation: get previous hand for this player
-    let prevHand = [];
-    if (prevState && prevState.hands && prevState.hands[p.id]) {
-      prevHand = prevState.hands[p.id].map(c => c.id);
+    const isCurrentPlayer = gameState.currentPlayer === p.id;
+    const isDisconnected = !p.connected;
+
+    const pid = `board-hand-${p.id.replace(/[^a-z0-9_-]/gi, '_')}`;
+    let handDiv = document.getElementById(pid);
+    if (!handDiv) {
+      handDiv = document.createElement('div');
+      handDiv.id = pid;
+      handDiv.className = 'board-hand-zone';
+      handsDiv.appendChild(handDiv);
     }
-    hand.forEach((card, i) => {
-      if(isMe && !card.hidden) {
-        const el = makeCard(card, {faceup:true, transform:'translateZ(5px)'});
-        // Add selection highlight if selected
-        if (selectedIds.includes(card.id)) {
-          el.classList.add('selected');
-          el.style.boxShadow = '0 0 0 3px #FCDE5A, 0 2px 8px #0006';
-        }
-        // Animate draw: card is new in hand
-        if (prevHand && !prevHand.includes(card.id)) {
-          el.classList.add('animated-draw');
-        }
-        // Add click handler for multi-play selection or single play
-        if (gameState.currentPlayer === myId && gameState.phase === 'play') {
-          el.style.cursor = 'pointer';
-          el.addEventListener('click', () => {
-            if (gameState.rules && gameState.rules.multiPlay) {
-              const idx = selectedIds.indexOf(card.id);
-              if (idx === -1) selectedIds.push(card.id); else selectedIds.splice(idx, 1);
-              window.renderUnoBoard(gameState, roomData, myId); // re-render for highlight
-            } else {
-              selectedIds.length = 0;
-              if (window.submitPlay) window.submitPlay([card.id], null, gameState, gameState.variant || 'classic');
-            }
-          });
-        }
-        handDiv.appendChild(el);
-      } else {
-        // For other players, show card back, but animate draw if new
-        const el = makeCard({back:true},{flipped:true});
-        if (prevHand && !prevHand.includes(card.id)) {
-          el.classList.add('animated-draw');
-        }
-        handDiv.appendChild(el);
+
+    // Position via polar coordinates
+    const { x, y, rot } = getSeatPos(seatIdx, totalSeats);
+    handDiv.style.left = x + '%';
+    handDiv.style.top = y + '%';
+    handDiv.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
+    handDiv.style.position = 'absolute';
+    handDiv.style.display = 'flex';
+    handDiv.style.flexDirection = 'row';
+    handDiv.style.alignItems = 'center';
+    handDiv.style.gap = isMe ? '3px' : '1px';
+    handDiv.style.zIndex = isMe ? '200' : '100';  
+    handDiv.style.pointerEvents = isMe ? 'auto' : 'none';
+    handDiv.style.filter = isDisconnected ? 'grayscale(1) opacity(0.5)' : '';
+
+    // For non-ME players: just show card-back count badges (fast render)
+    if (!isMe) {
+      // Opponent card backs - compact stack view
+      handDiv.innerHTML = '';
+      const countBadge = document.createElement('div');
+      countBadge.className = 'opp-hand-badge' + (isCurrentPlayer ? ' opp-active' : '');
+      const cardCount = hand.length || (gameState.handCounts?.[p.id] ?? 0);
+      
+      // Show a max of 8 mini card backs visually, then a count
+      const visibleCount = Math.min(cardCount, 6);
+      let backsHTML = '';
+      for (let i = 0; i < visibleCount; i++) {
+        const offset = i * 4;
+        backsHTML += `<div class="mini-card-back" style="margin-left:${i > 0 ? '-10px' : '0'};z-index:${i}"></div>`;
       }
+      countBadge.innerHTML = `
+        <div class="opp-name-label${isCurrentPlayer ? ' active' : ''}">${p.name || 'P'+(seatIdx+1)}${isDisconnected ? ' ⚡' : ''}${isCurrentPlayer ? ' •' : ''}</div>
+        <div class="opp-card-stack">${backsHTML}</div>
+        <div class="opp-count-label">${cardCount} card${cardCount !== 1 ? 's' : ''}</div>
+      `;
+      handDiv.appendChild(countBadge);
+      return;
+    }
+
+    // ── MY hand: render interactive cards (skip full rebuild if cards unchanged)
+    const handKey = hand.map(c => c.id + (selectedIds.includes(c.id) ? 'S' : '')).join(',');
+    if (handDiv.dataset.handKey === handKey && handDiv.dataset.turn === String(isCurrentPlayer)) return;
+    handDiv.dataset.handKey = handKey;
+    handDiv.dataset.turn = String(isCurrentPlayer);
+    handDiv.innerHTML = '';
+
+    const prevHand = prevState?.hands?.[p.id]?.map(c => c.id) || [];
+
+    // My hand: display at bottom, un-rotated (reset rotation for me)
+    handDiv.style.transform = `translate(-50%, -50%) rotate(0deg)`;
+    handDiv.style.bottom = 'auto';
+    handDiv.style.gap = '3px';
+    handDiv.style.pointerEvents = 'auto';
+
+    const myTurn = gameState.currentPlayer === myId && gameState.phase === 'play';
+
+    // Calculate fan spread for large hands
+    const maxCardWidth = window.innerWidth < 480 ? 52 : 72;
+    const totalCards = hand.filter(c => !c.hidden).length;
+    const containerWidth = Math.min(window.innerWidth * 0.92, 700);
+    const cardGap = totalCards > 1 ? Math.min(maxCardWidth + 2, Math.floor((containerWidth - maxCardWidth) / totalCards)) : maxCardWidth;
+
+    hand.forEach((card, i) => {
+      if (card.hidden) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'card-wrap' + (selectedIds.includes(card.id) ? ' sel' : '');
+      wrap.dataset.id = card.id;
+      wrap.style.width = maxCardWidth + 'px';
+      wrap.style.flexShrink = '0';
+
+      // Card art
+      const img = document.createElement('img');
+      img.src = getCardArtFilename(card, card.id || i, gameState);
+      img.width = maxCardWidth;
+      img.height = Math.round(maxCardWidth * 1.4);
+      img.style.display = 'block';
+      img.draggable = false;
+      wrap.appendChild(img);
+
+      if (selectedIds.includes(card.id)) {
+        const ring = document.createElement('div');
+        ring.className = 'sel-ring';
+        wrap.appendChild(ring);
+      }
+
+      // Check playability
+      const playable = myTurn && window.isPlayable ? window.isPlayable(card, gameState, gameState.variant || 'classic') : false;
+      const isDrawn = window.canPlayDrawn === card.id;
+      if (!myTurn || (!playable && !isDrawn)) wrap.classList.add('dim');
+
+      if (myTurn) {
+        wrap.style.cursor = 'pointer';
+        // Touch-friendly: use pointerup instead of click to avoid ghost taps
+        let _ptDown = false;
+        wrap.addEventListener('pointerdown', () => { _ptDown = true; }, { passive: true });
+        wrap.addEventListener('pointerup', (e) => {
+          if (!_ptDown) return;
+          _ptDown = false;
+          e.stopPropagation();
+          if (window.onCardClick) window.onCardClick(card, wrap, gameState, gameState.variant || 'classic');
+        });
+      }
+
+      if (prevHand && !prevHand.includes(card.id)) {
+        wrap.classList.add('animated-draw');
+      }
+
+      handDiv.appendChild(wrap);
     });
-    handsDiv.appendChild(handDiv);
   });
 
-  // Multi-play floating button (bottom center)
+  // Remove any stale player hand zones for players who left
+  const allHandZones = handsDiv.querySelectorAll('.board-hand-zone');
+  allHandZones.forEach(zone => {
+    const zonePid = zone.id.replace('board-hand-', '');
+    const stillHere = seatOrder.some(p => `board-hand-${p.id.replace(/[^a-z0-9_-]/gi, '_')}` === zone.id);
+    if (!stillHere) zone.remove();
+  });
+
+  // ── Multi-play floating button ─────────────────────────────────────────────
   let playBtn = document.getElementById('multi-play-btn');
-  if (playBtn) playBtn.remove();
-  if (gameState.rules && gameState.rules.multiPlay && selectedIds.length > 0 && gameState.currentPlayer === myId && gameState.phase === 'play') {
+  if (!playBtn) {
     playBtn = document.createElement('button');
     playBtn.id = 'multi-play-btn';
     playBtn.className = 'uno-btn';
-    playBtn.style.position = 'absolute';
-    playBtn.style.left = '50%';
-    playBtn.style.bottom = '38px';
-    playBtn.style.transform = 'translateX(-50%)';
-    playBtn.style.zIndex = 350;
+    playBtn.style.cssText = 'position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:350;display:none;';
+    world.appendChild(playBtn);
+  }
+  if (gameState.rules?.multiPlay && selectedIds.length > 0 && gameState.currentPlayer === myId && gameState.phase === 'play') {
+    playBtn.style.display = '';
     playBtn.textContent = selectedIds.length === 1 ? '▶ Play card' : `▶ Play ${selectedIds.length} cards`;
     playBtn.onclick = () => {
       if (window.submitPlay) window.submitPlay([...selectedIds], null, gameState, gameState.variant || 'classic');
       selectedIds.length = 0;
       window.renderUnoBoard(gameState, roomData, myId);
     };
-    world.appendChild(playBtn);
+  } else {
+    playBtn.style.display = 'none';
   }
 
-  // Draw pile (center)
+  // ── Draw Pile ─────────────────────────────────────────────────────────────
   const ds = world.querySelector('.draw-stack');
-  const drawCount = gameState.drawPile ? gameState.drawPile.length : (gameState.drawPileCount || 8);
-  for(let i=0;i<drawCount;i++) {
-    const el = makeCard({back:true},{flipped:true});
-    el.style.transform = `translateZ(${i*1.5}px) rotateZ(${(Math.random()-0.5)*2}deg)`;
-    // Only top card is clickable for draw
-    if (i === drawCount - 1 && gameState.currentPlayer === myId && gameState.phase === 'play') {
-      el.style.cursor = 'pointer';
-      el.addEventListener('click', () => {
-        if (window.requestDrawFromStack) window.requestDrawFromStack();
-      });
-    }
-    ds.appendChild(el);
-  }
-
-  // Discard pile (center)
-  const dcs = world.querySelector('.discard-stack');
-  const discards = gameState.discardPile || [];
-  // Animate play: highlight the most recent card(s) played
-  const prevDiscards = prevState && prevState.discardPile ? prevState.discardPile.map(c=>c.id) : [];
-  discards.slice(-3).forEach((card, i) => {
-    const el = makeCard(card, {faceup:true});
-    el.style.transform = `translateZ(${i*1.5}px) rotateZ(${(Math.random()-0.5)*18}deg)`;
-    // If this card is new on the pile, animate play
-    if (prevDiscards && !prevDiscards.includes(card.id) && i === discards.length-1-i) {
-      el.classList.add('animated-play');
-    }
-    dcs.appendChild(el);
-  });
-
-  // HUD: turn indicator
-  const hudTurn = world.querySelector('.hud-turn');
-  const current = players.find(p=>p.id===gameState.currentPlayer);
-  hudTurn.textContent = current ? (current.id===myId ? '✦ Your Turn' : `✦ ${current.name}'s Turn`) : '';
-
-  // HUD: timer (simulate or use gameState.timer)
-  const timer = world.querySelector('.hud-timer');
-  let t = gameState.timer || 20;
-  timer.textContent = t+'s';
-  if(t<=5) timer.style.color = timer.style.borderColor = '#E24B4A';
-  else if(t<=10) timer.style.color = timer.style.borderColor = '#EF9F27';
-  else timer.style.color = timer.style.borderColor = '#FCDE5A';
-
-  // UNO button (bottom right, on board)
-    // Show chosen color after wild card
-    const wildColorPill = world.querySelector('#wild-color-pill');
-    const lastCard = discards[discards.length-1];
-    const wildTypes = ['wild','wild4','wildDraw2','wildDrawColor','wildRevDraw4','wildDraw6','wildDraw10','wildColorRoulette'];
-    if (lastCard && wildTypes.includes(lastCard.type) && gameState.currentColor) {
-      wildColorPill.style.display = '';
-      wildColorPill.textContent = `Wild Color: ${gameState.currentColor.toUpperCase()}`;
-      wildColorPill.style.background = (CHEX && CHEX[gameState.currentColor]) || '#555';
-      wildColorPill.style.color = '#fff';
-      wildColorPill.style.fontWeight = 'bold';
-      wildColorPill.style.boxShadow = `0 0 12px 2px ${(CHEX && CHEX[gameState.currentColor]) || '#555'}88`;
-    } else {
-      wildColorPill.style.display = 'none';
-    }
-  const unoBtn = world.querySelector('.board-uno-btn');
-  const myHand = (gameState.hands && gameState.hands[myId]) || [];
-  const unoNeeded = (gameState.currentPlayer === myId && myHand.length === 1 && !(gameState.unoFlags && gameState.unoFlags[myId]));
-  unoBtn.style.display = unoNeeded ? '' : 'none';
-  unoBtn.textContent = '🃏 UNO!';
-  if (unoNeeded) {
-    unoBtn.onclick = () => {
-      if (window.emit) window.emit('callUno', { actingAs: myId });
-      // Animate and play UNO sound
-      unoBtn.classList.add('animated-uno');
-      if (window._unoSoundUNO) { window._unoSoundUNO.currentTime = 0; window._unoSoundUNO.play(); }
-      setTimeout(() => unoBtn.classList.remove('animated-uno'), 1200);
-    };
-  } else {
-    unoBtn.onclick = null;
-  }
-
-  // Draw button (bottom left, always visible)
-  const drawBtn = world.querySelector('.board-draw-btn');
-  // Logic matches app.js refreshHUD
-  const myTurn = gameState.currentPlayer === myId && gameState.phase === 'play';
-  const hasPlayableInHand = myHand.some(c=>!c.hidden&&(
-    (window.isPlayable ? window.isPlayable(c, gameState, gameState.variant || 'classic') : true)
-  ));
-  const canDrawNow = !!(gameState.pendingDraw>0 || window.canPlayDrawn || gameState.rules?.allowVoluntaryDraw || !hasPlayableInHand);
-  drawBtn.style.display = '';
-  if(window.canPlayDrawn){
-    drawBtn.innerHTML = '<span>↷</span> Pass';
-  } else if(gameState.pendingDraw>0){
-    drawBtn.innerHTML = `<span>🂠</span> Draw +${gameState.pendingDraw}`;
-  } else {
-    drawBtn.innerHTML = '<span>🂠</span> Draw';
-  }
-  if (myTurn && canDrawNow) {
-    drawBtn.disabled = false;
-    drawBtn.classList.remove('disabled');
-    drawBtn.onclick = () => {
-      // Always call requestDrawFromStack, which emits the drawCards event
-      if (window.requestDrawFromStack) window.requestDrawFromStack();
-    };
-  } else {
-    drawBtn.disabled = true;
-    drawBtn.classList.add('disabled');
-    drawBtn.onclick = null;
-  }
-
-  // Caught You buttons for all other players (bottom center, stacked)
-  let caughtBtns = document.querySelectorAll('.caught-btn');
-  caughtBtns.forEach(btn => btn.remove());
-  if (gameState.phase === 'play') {
-    const caughtDiv = document.createElement('div');
-    caughtDiv.style.position = 'absolute';
-    caughtDiv.style.left = '50%';
-    caughtDiv.style.bottom = '90px';
-    caughtDiv.style.transform = 'translateX(-50%)';
-    caughtDiv.style.display = 'flex';
-    caughtDiv.style.flexDirection = 'column';
-    caughtDiv.style.gap = '8px';
-    const players = roomData?.players || [];
-    players.forEach((p) => {
-      if (p.id !== myId && p.id !== gameState.currentPlayer) {
-        const btn = document.createElement('button');
-        btn.className = 'caught-btn';
-        btn.textContent = `Caught You (${p.name || 'Player'})`;
-        btn.style.margin = '2px auto';
-        btn.onclick = () => {
-          if (window.emit) window.emit('caughtUno', { target: p.id, actingAs: myId });
-          // Animate and play sound
-          btn.classList.add('animated-caught');
-          if (window._unoSoundCaught) { window._unoSoundCaught.currentTime = 0; window._unoSoundCaught.play(); }
-          setTimeout(() => btn.classList.remove('animated-caught'), 1200);
-        };
-        caughtDiv.appendChild(btn);
+  if (ds) {
+    const drawCount = gameState.drawPileCount || (gameState.drawPile ? gameState.drawPile.length : 8);
+    const shownCount = Math.min(drawCount, 5); // Visual only: 5 cards max
+    ds.innerHTML = '';
+    for (let i = 0; i < shownCount; i++) {
+      const el = document.createElement('div');
+      el.className = 'uno-card flipped';
+      el.style.transform = `translateZ(${i * 1.5}px) rotateZ(${(i % 3 - 1) * 1.2}deg)`;
+      const img = document.createElement('img');
+      img.src = getCardArtFilename({ back: true }, 0, gameState);
+      img.style.cssText = 'width:100%;height:100%;display:block;';
+      img.draggable = false;
+      el.appendChild(img);
+      if (i === shownCount - 1 && gameState.currentPlayer === myId && gameState.phase === 'play') {
+        el.style.cursor = 'pointer';
+        el.addEventListener('pointerup', () => { if (window.requestDrawFromStack) window.requestDrawFromStack(); });
       }
-    });
-    world.appendChild(caughtDiv);
+      ds.appendChild(el);
+    }
   }
-  // Score modal (top left)
-  if (roomData && roomData.scores && roomData.players) {
+
+  // ── Discard Pile ──────────────────────────────────────────────────────────
+  const dcs = world.querySelector('.discard-stack');
+  if (dcs) {
+    const prevDiscardIds = prevState?.discardPile?.map(c => c.id) || [];
+    dcs.innerHTML = '';
+    discards.slice(-4).forEach((card, i, arr) => {
+      const el = document.createElement('div');
+      el.className = 'uno-card faceup';
+      const jitter = ((card.id || i) % 7 - 3) * 1.8;
+      el.style.transform = `translateZ(${i * 1.5}px) rotateZ(${jitter}deg)`;
+      const img = document.createElement('img');
+      img.src = getCardArtFilename(card, card.id || i, gameState);
+      img.style.cssText = 'width:100%;height:100%;display:block;';
+      img.draggable = false;
+      el.appendChild(img);
+      if (!prevDiscardIds.includes(card.id) && i === arr.length - 1) {
+        el.classList.add('animated-play');
+      }
+      dcs.appendChild(el);
+    });
+  }
+
+  // ── HUD Updates ───────────────────────────────────────────────────────────
+  const hudTurn = document.getElementById('board-hud-turn');
+  const current = players.find(p => p.id === gameState.currentPlayer);
+  if (hudTurn) hudTurn.textContent = current ? (current.id === myId ? '✦ Your Turn' : `✦ ${current.name}'s Turn`) : '';
+
+  const timer = document.getElementById('board-hud-timer');
+  const t = gameState.timer || 20;
+  if (timer) {
+    timer.textContent = t + 's';
+    timer.style.color = t <= 5 ? '#E24B4A' : t <= 10 ? '#EF9F27' : '#FCDE5A';
+    timer.style.borderColor = timer.style.color;
+  }
+
+  // ── UNO Button ────────────────────────────────────────────────────────────
+  const unoBtn = document.getElementById('board-uno-btn');
+  const myHand = (gameState.hands && gameState.hands[myId]) || [];
+  const unoNeeded = gameState.currentPlayer === myId && myHand.length <= 2 && !(gameState.unoFlags?.[myId]);
+  if (unoBtn) {
+    unoBtn.style.display = unoNeeded && !isSpectator ? '' : 'none';
+    unoBtn.textContent = '🃏 UNO!';
+    unoBtn.onclick = unoNeeded ? () => {
+      if (window.emit) window.emit('callUno', { actingAs: myId });
+      unoBtn.classList.add('animated-uno');
+      if (window._unoSoundUNO) { window._unoSoundUNO.currentTime = 0; window._unoSoundUNO.play().catch(() => {}); }
+      setTimeout(() => unoBtn.classList.remove('animated-uno'), 1200);
+    } : null;
+  }
+
+  // ── Draw Button ───────────────────────────────────────────────────────────
+  const drawBtn = document.getElementById('board-draw-btn');
+  const myTurnNow = gameState.currentPlayer === myId && gameState.phase === 'play';
+  if (drawBtn && !isSpectator) {
+    drawBtn.style.display = '';
+    if (window.canPlayDrawn) {
+      drawBtn.innerHTML = '<span>↷</span> Pass';
+    } else if (gameState.pendingDraw > 0) {
+      drawBtn.innerHTML = `<span>🂠</span> Draw +${gameState.pendingDraw}`;
+    } else {
+      drawBtn.innerHTML = '<span>🂠</span> Draw';
+    }
+    drawBtn.disabled = !myTurnNow;
+    drawBtn.classList.toggle('disabled', !myTurnNow);
+    drawBtn.onclick = myTurnNow ? () => { if (window.requestDrawFromStack) window.requestDrawFromStack(); } : null;
+  } else if (drawBtn) {
+    drawBtn.style.display = 'none';
+  }
+
+  // ── Score modal ───────────────────────────────────────────────────────────
+  if (roomData?.scores && roomData?.players) {
     renderScoreModal(roomData.scores, roomData.players, gameState.winner);
   }
-  // Save current state for next diff
-  window._unoBoardPrevState = JSON.parse(JSON.stringify(gameState));
+
+  // ── Caught-You buttons ────────────────────────────────────────────────────
+  let caughtDiv = document.getElementById('board-caught-div');
+  if (!caughtDiv) {
+    caughtDiv = document.createElement('div');
+    caughtDiv.id = 'board-caught-div';
+    caughtDiv.style.cssText = 'position:absolute;left:50%;bottom:90px;transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;z-index:400;';
+    world.appendChild(caughtDiv);
+  }
+  if (gameState.phase === 'play' && !isSpectator) {
+    caughtDiv.innerHTML = '';
+    players.forEach(p => {
+      if (p.id !== myId) {
+        const cnt = gameState.handCounts?.[p.id] ?? (gameState.hands?.[p.id]?.length ?? 0);
+        const flagged = !(gameState.unoFlags?.[p.id]);
+        if (cnt === 1 && flagged) {
+          const btn = document.createElement('button');
+          btn.className = 'caught-btn';
+          btn.textContent = `Caught ${p.name || 'Player'}!`;
+          btn.addEventListener('pointerup', () => {
+            if (window.emit) window.emit('catchUno', { targetId: p.id, actingAs: myId });
+            btn.classList.add('animated-caught');
+            if (window._unoSoundCaught) { window._unoSoundCaught.currentTime = 0; window._unoSoundCaught.play().catch(() => {}); }
+            setTimeout(() => btn.classList.remove('animated-caught'), 1200);
+          });
+          caughtDiv.appendChild(btn);
+        }
+      }
+    });
+  } else {
+    if (caughtDiv) caughtDiv.innerHTML = '';
+  }
+
+  // ── Spectator banner ──────────────────────────────────────────────────────
+  let specBanner = document.getElementById('spectator-banner');
+  if (isSpectator) {
+    if (!specBanner) {
+      specBanner = document.createElement('div');
+      specBanner.id = 'spectator-banner';
+      specBanner.style.cssText = 'position:absolute;top:10px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.7);color:#FFD700;padding:6px 18px;border-radius:20px;font-size:13px;font-weight:700;letter-spacing:1px;z-index:500;';
+      specBanner.textContent = '👁 Spectating';
+      world.appendChild(specBanner);
+    }
+  } else {
+    if (specBanner) specBanner.remove();
+  }
+
+  // Save previous state for animation diffing
+  window._unoBoardPrevState = { hands: JSON.parse(JSON.stringify(gameState.hands || {})), discardPile: (gameState.discardPile || []).map(c => ({ id: c.id })) };
 };
