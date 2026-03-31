@@ -788,6 +788,32 @@ input{font-family:inherit;outline:none}
 .chat-in input{flex:1;background:none;border:none;padding:9px;color:var(--text);font-size:12px}
 .chat-in button{background:var(--accent);color:#fff;border:none;padding:9px 13px;font-size:13px}
 
-/* Responsive */
-@media(max-width:900px){.variants{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.variants{grid-template-columns:1fr};.v-desc{display:none};.card-wrap canvas{width:54px!important;height:76px!important}}
+/* Responsive UI Updates */
+@media(max-width:900px){
+  .variants{grid-template-columns:1fr 1fr}
+  #uno-world { transform: scale(0.75); transform-origin: center center; }
+  .hud-top { font-size: 14px; }
+  .hand-scroll { padding: 8px 4px 0; }
+}
+
+@media(max-width:520px){
+  .variants{grid-template-columns:1fr}
+  .v-desc{display:none}
+  .card-wrap canvas, .card-wrap img {width:54px!important;height:76px!important}
+  
+  #uno-world { transform: scale(0.55); transform-origin: center 40%; }
+  
+  .hud-top {
+    justify-content: center;
+    padding: 8px;
+  }
+  .deck-info { position: absolute; right: 8px; top: 8px; transform: scale(0.8); }
+  .orb-wrap { bottom: 120px; left: 6px; right: auto; transform: scale(0.75); transform-origin: bottom left; }
+  
+  .actions { bottom: 120px; right: 6px; transform: scale(0.75); transform-origin: bottom right; }
+  .chat-panel { bottom: 120px; left: 6px; transform: scale(0.8); transform-origin: bottom left; }
+  
+  .hand-area { background: rgba(0,0,0,0.85); padding: 4px; }
+  .hud-pill { transform: scale(0.8); }
+  .board-player-label { font-size: 10px; }
+}

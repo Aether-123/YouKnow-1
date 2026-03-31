@@ -125,23 +125,40 @@ window.renderUnoBoard = function(gameState, roomData, myId) {
     wild_draw4: ["wild_draw4_1.svg", "wild_draw4_2.svg", "wild_draw4_3.svg", "wild_draw4_4.svg"],
     back: "../back/card_back.svg"
   };
-  function getCardArtFilename(card, idx=0) {
-    if (card.back) return CARD_MANIFEST['back'];
-    let key = card.color + '_';
-    if (card.type === 'number') key += card.value;
-    else if (card.type === 'draw2' || card.type === '+2') key += 'draw2';
-    else if (card.type === 'skip') key += 'skip';
-    else if (card.type === 'reverse') key += 'reverse';
-    else if (card.type === 'wild') key = 'wild_wild';
-    else if (card.type === 'wild4') key = 'wild_draw4';
-    else key += card.type || card.value || 'unknown';
-    const entry = CARD_MANIFEST[key];
-    if (Array.isArray(entry)) {
-      // Use idx to pick which duplicate art to use (for now, just use i % n)
-      return entry[idx % entry.length];
-    }
-    return entry || CARD_MANIFEST['back'];
+
+  // Helper to load async assets before rendering the board if needed
+  if (gameState.variant && gameState.variant !== 'classic' && !window._crPreloaded) {
+    CR.preloadImages().then(() => {
+      window._crPreloaded = true;
+      window.renderUnoBoard(gameState, roomData, myId);
+    });
+    return; // Wait for images to load on the first pass
   }
+
+  function getCardArtFilename(card, idx=0) {
+    // Handle classic variant
+    if (!gameState.variant || gameState.variant === 'classic') {
+      if (card.back) return CARD_ART_PATH + CARD_MANIFEST['back'];
+      let key = card.color + '_';
+      if (card.type === 'number') key += card.value;
+      else if (card.type === 'draw2' || card.type === '+2') key += 'draw2';
+      else if (card.type === 'skip') key += 'skip';
+      else if (card.type === 'reverse') key += 'reverse';
+      else if (card.type === 'wild') key = 'wild_wild';
+      else if (card.type === 'wild4' || card.type === 'wild_draw4') key = 'wild_draw4';
+      else key += card.type || card.value || 'unknown';
+      const entry = CARD_MANIFEST[key];
+      if (Array.isArray(entry)) return CARD_ART_PATH + entry[idx % entry.length];
+      return CARD_ART_PATH + (entry || CARD_MANIFEST['back']);
+    }
+
+    // High fidelity generative render
+    const faceUp = !card.back;
+    return CR.getDataURL(card, gameState.isLight, gameState.variant, faceUp);
+  }
+  
+  window.getUnoCardArt = getCardArtFilename;
+
   function makeCard(card, opts={}) {
     const el = document.createElement('div');
     el.className = 'uno-card' + (opts.faceup ? ' faceup' : '') + (opts.flipped ? ' flipped' : '');
@@ -151,7 +168,10 @@ window.renderUnoBoard = function(gameState, roomData, myId) {
     img.style.width = '100%';
     img.style.height = '100%';
     img.style.display = 'block';
-    img.src = CARD_ART_PATH + getCardArtFilename(card);
+    if (!opts.faceup) {
+      card = { back: true };
+    }
+    img.src = getCardArtFilename(card, card.id || 0);
     el.appendChild(img);
     return el;
   }

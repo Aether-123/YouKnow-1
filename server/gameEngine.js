@@ -112,12 +112,14 @@ class UnoGame {
       return this._ok('roundEnd', { winner: playerId, score: this.scores[playerId], roundScore });
     }
 
+    if (this._checkMercy()) return this._ok('mercyWin', { winner: this.state.winner });
     return this._ok(res.event || 'played');
   }
 
   drawCards(playerId) {
     const res = applyDraw(this, playerId);
     if (!res.ok) return this._err(res.error);
+    if (this._checkMercy()) return this._ok('mercyWin', { winner: this.state.winner });
     return this._ok(res.event || 'drew', {
       drawn: res.drawn,
       canPlay: res.canPlay,
@@ -168,6 +170,28 @@ class UnoGame {
     return this._ok('unoCalled', { caller: playerId });
   }
 
+  _checkMercy() {
+    if (!this.rules.mercy) return false;
+    const s = this.state;
+    let newKO = false;
+    for (const p of this.playerIds) {
+      if (!s.knockedOut.includes(p) && s.hands[p].length >= 25) {
+        s.knockedOut.push(p);
+        s.hands[p].forEach(c => s.discardPile.unshift(c));
+        s.hands[p] = [];
+        newKO = true;
+      }
+    }
+    if (newKO) {
+      const alive = this.playerIds.filter(p => !s.knockedOut.includes(p));
+      if (alive.length === 1) {
+        this.endRound(alive[0]);
+        return true;
+      }
+    }
+    return false;
+  }
+
   catchUno(callerId, targetId) {
     const s = this.state;
     if (!s.hands[targetId] || s.hands[targetId].length !== 1) return this._err('Target does not have 1 card');
@@ -211,6 +235,7 @@ class UnoGame {
     s.awaitingData = {};
     // Failed challenge: challenger loses turn; move to next player once.
     advanceTurn(s, this.playerIds, { skips: 0 });
+    if (this._checkMercy()) return this._ok('mercyWin', { winner: this.state.winner });
     return this._ok('challengeResult', { guilty: false, challenger: challengerId, drew: penalty });
   }
 

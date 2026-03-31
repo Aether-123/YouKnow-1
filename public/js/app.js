@@ -303,13 +303,23 @@ function renderHand(hand,gs,v){
     if(card.hidden) return;
     const wrap=document.createElement('div'); wrap.className='card-wrap';
     wrap.dataset.id=card.id;
-    const canvas=CR.getCanvas(card,gs.isLight??true,v,true,68,96);
-    // cloneNode() does not copy canvas bitmap; draw into a fresh canvas instead.
-    const cv=document.createElement('canvas');
-    cv.width=canvas.width;
-    cv.height=canvas.height;
-    cv.getContext('2d').drawImage(canvas,0,0);
-    wrap.appendChild(cv);
+    
+    if (window.getUnoCardArt) {
+      const img = document.createElement('img');
+      img.src = window.getUnoCardArt(card, card.id || 0);
+      img.width = 68;
+      img.height = 96;
+      img.style.display = 'block';
+      img.draggable = false;
+      wrap.appendChild(img);
+    } else {
+      const canvas=CR.getCanvas(card,gs.isLight??true,v,true,68,96);
+      const cv=document.createElement('canvas');
+      cv.width=canvas.width;
+      cv.height=canvas.height;
+      cv.getContext('2d').drawImage(canvas,0,0);
+      wrap.appendChild(cv);
+    }
 
     const playable=myTurn&&isPlayable(card,gs,v);
     const isSel=selectedIds.includes(card.id);
@@ -402,6 +412,37 @@ function isPlayable(card,gs,v){
   const gv=c=>v==='flip'?(isLight?c.light?.value:c.dark?.value):c.value;
   const myT=gt(card),myC=gc(card),myV=gv(card);
 
+  // Allow multi-play grouping: If cards are already selected, validate against the group!
+  if (window.selectedIds && window.selectedIds.length > 0) {
+    const actId = getActingId();
+    const hand = gs.hands?.[actId] || gs.hands?.[myId] || [];
+    
+    const selectedCards = window.selectedIds.map(id => hand.find(c => c.id === id)).filter(Boolean);
+    if (selectedCards.length > 0) {
+      const first = selectedCards[0];
+      const fT = gt(first), fC = gc(first), fV = gv(first);
+      
+      if (fT === 'number' && myT === 'number') {
+        const currentlySameColor = selectedCards.every(c => gc(c) === fC);
+        const currentlySameValue = selectedCards.every(c => gv(c) === fV);
+        
+        if (currentlySameColor && !currentlySameValue) {
+          // Locked into 'same color' stack
+          return myC === fC;
+        } else if (currentlySameValue && !currentlySameColor) {
+          // Locked into 'same value' stack
+          return myV === fV;
+        } else {
+          // Currently only 1 card, or cards match BOTH (e.g. duplicate identical cards)
+          return myC === fC || myV === fV;
+        }
+      } else if (fT !== 'number' && myT !== 'number') {
+        return fT === myT; // Must be same action type
+      }
+      return false; // Cannot mix numbers and actions
+    }
+  }
+
   // Pending draw + no stacking → can't play
   if(gs.pendingDraw>0&&!gs.rules?.stacking) return false;
 
@@ -479,9 +520,10 @@ async function submitPlay(cardIds,color,gs,v){
     const sameColor=colors[0]!=='wild'&&colors.every(c=>c===colors[0]);
     const sameAction=types[0]!=='number'&&types.every(t=>t===types[0]);
     const sameNumber=types.every(t=>t==='number')&&vals.every(n=>n===vals[0]);
-    // Allow: all numbers same color (any value), or all same action (any color)
-    if(!((types.every(t=>t==='number')&&sameColor)||(sameAction))){
-      setStatus('Invalid multi-play: must be all numbers of same color, or all same action.','w',2600);
+    // Allow: all numbers same color, OR all numbers same value, OR all same action
+    const allNumber=types.every(t=>t==='number');
+    if(!((allNumber&&sameColor)||(allNumber&&sameNumber)||(sameAction))){
+      setStatus('Invalid multi-play: must be same number, same color, or same action.','w',2600);
       return;
     }
   }
@@ -673,9 +715,17 @@ function showRoundEnd(data){
     const cardsDiv = document.createElement('div');
     cardsDiv.className = 'board-cards';
     (hand.cards||[]).forEach(card => {
-      const cardEl = CR.getCanvas(card, true, hand.variant || 'classic', true, 40, 56);
-      cardEl.className = 'board-card';
-      cardsDiv.appendChild(cardEl);
+      if (window.getUnoCardArt) {
+        const img = document.createElement('img');
+        img.src = window.getUnoCardArt(card);
+        img.className = 'board-card';
+        img.width = 40; img.height = 56;
+        cardsDiv.appendChild(img);
+      } else {
+        const cardEl = CR.getCanvas(card, true, hand.variant || 'classic', true, 40, 56);
+        cardEl.className = 'board-card';
+        cardsDiv.appendChild(cardEl);
+      }
     });
     row.appendChild(cardsDiv);
     board.appendChild(row);

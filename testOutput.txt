@@ -1,0 +1,10 @@
+﻿PASS | Single: same number different color
+PASS | Single: same color different number
+PASS | Single: different color and number
+PASS | Multi: same number across colors
+FAIL | Multi: mixed numbers same color (house rule)
+  Result: {
+  ok: false,
+  error: 'All number cards played together must have the same value, unless all are the same color (house rule).'
+}
+PASS | Multi: mixed number and color (invalid)

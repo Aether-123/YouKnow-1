@@ -45,15 +45,73 @@ function applyPlay(game, playerId, cardIds, chosenColor) {
   for (const card of cards) {
     const t = getType(card, s.isLight);
     const c = getColor(card, s.isLight);
+    const v = card.value;
 
     if (!isWild(t)) s.currentColor = c;
 
     if (t === 'skip') fx.skips += 1;
     if (t === 'reverse') fx.reverses += 1;
-    if (t === 'draw2' || t === 'wildDraw2' || t === 'wild4' || t === 'wildRevDraw4' || t === 'draw4') {
+    if (t === 'flip') s.isLight = !s.isLight;
+    if (t === 'skipAll' || t === 'skipEveryone') fx.skips += game.playerIds.length - 1;
+
+    // Zeroes Pass Custom Rule
+    if (t === 'number' && v === 0 && rules.zerosPass) {
+      const pCount = game.playerIds.length;
+      if (pCount > 1) {
+        const offset = s.direction === 1 ? -1 : 1; 
+        const newHands = {};
+        for (let i = 0; i < pCount; i++) {
+          const fromIdx = (i + offset + pCount) % pCount;
+          newHands[game.playerIds[i]] = [...s.hands[game.playerIds[fromIdx]]];
+        }
+        s.hands = newHands;
+      }
+    }
+
+    if (t === 'discardAll') {
+      const remainingColor = isWild(t) ? s.currentColor : c;
+      const handToClean = s.hands[playerId];
+      const matchingCards = [...handToClean].filter(hc => !cardIds.includes(hc.id) && getColor(hc, s.isLight) === remainingColor);
+      matchingCards.forEach(mc => {
+        const i = handToClean.findIndex(hc => hc.id === mc.id);
+        if (i !== -1) handToClean.splice(i, 1);
+        s.discardPile.push(mc);
+      });
+    }
+
+    if (['draw1','draw2','draw4','draw5','wildDraw2','wild4','wildRevDraw4','wildDraw6','wildDraw10'].includes(t)) {
+      if (t === 'wildRevDraw4') fx.reverses += 1;
       fx.drawTotal += getDrawCount(t);
       fx.drawType = fx.drawType || getDrawType(t);
       fx.challengedCardOwner = playerId;
+    }
+
+    if (t === 'wildDrawColor' || t === 'wildColorRoulette') {
+      const victim = peekNextPlayer(s, game.playerIds, playerId, { reverses:fx.reverses, skips:fx.skips });
+      
+      if (t === 'wildDrawColor') {
+        s.awaitingData.wildDrawColorTarget = victim; 
+      } else {
+        s.phase = 'choose-roulette';
+        s.awaitingFrom = victim;
+      }
+    }
+
+    // Voldemort custom rule (Harry Potter)
+    if (t === 'voldemort' || t === 'wildHarryPotter') {
+      const handToClean = s.hands[playerId];
+      const harryCards = [...handToClean].filter(hc => rules.HP_HARRY_NUMS && rules.HP_HARRY_NUMS.includes(hc.value));
+      harryCards.forEach(mc => {
+        const i = handToClean.findIndex(hc => hc.id === mc.id);
+        if (i !== -1) handToClean.splice(i, 1);
+        s.discardPile.push(mc);
+      });
+    }
+
+    // Sevens Swap
+    if (t === 'number' && v === 7 && rules.sevensSwap) {
+      s.phase = 'choose-swap';
+      s.awaitingFrom = playerId;
     }
   }
 

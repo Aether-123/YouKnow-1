@@ -4,10 +4,13 @@
   "description": "Multiplayer 3D UNO - Classic, Harry Potter, Flip & No Mercy",
   "main": "server/index.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "test": "node server/engine/ruleCheck.numberThrows.js"
   },
   "dependencies": {
     "express": "^4.18.2",
+    "pdf-parse": "^2.4.5",
+    "pdf.js-extract": "^0.2.1",
     "socket.io": "^4.7.2",
     "uuid": "^9.0.0"
   }

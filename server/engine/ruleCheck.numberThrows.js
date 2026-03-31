@@ -1,15 +1,16 @@
 'use strict';
 
 const { validateMove } = require('./validator');
+const { normalizeRules } = require('./rules');
 
-const rules = {
+const rules = normalizeRules({
   stacking: true,
   multiPlay: true,
   multiDraw: true,
   allowVoluntaryDraw: false,
   strictWild4: true,
   allowStackMixing: false
-};
+});
 
 function card(id, type, color, value = 0) {
   return { id, type, color, value, variant: 'classic' };
