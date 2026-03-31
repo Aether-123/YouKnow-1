@@ -334,11 +334,13 @@
 .uno-card.animated-fadeout {
   animation: cardFadeOut 0.4s cubic-bezier(.4,1.6,.6,1) forwards;
 }
-.uno-card:hover {
-  z-index: 999;
-  filter: brightness(1.2);
-  transform: translateY(-18px) scale(1.08) translateZ(5px);
-  box-shadow: 0 8px 32px #fff8, 0 2px 8px #000a;
+@media (hover: hover) and (pointer: fine) {
+  .uno-card:hover {
+    z-index: 999;
+    filter: brightness(1.2);
+    transform: translateY(-18px) scale(1.08) translateZ(5px);
+    box-shadow: 0 8px 32px #fff8, 0 2px 8px #000a;
+  }
 }
 @keyframes cardDeal {
   from { opacity: 0; transform: scale(0.7) translateY(60px) rotateZ(-12deg); }

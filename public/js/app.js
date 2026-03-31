@@ -217,7 +217,7 @@ function refreshHUD(){
     drawBtn.innerHTML='<span>🂠</span><span>Draw</span>';
   }
   const hand=gs.hands?.[actId]||[];
-  $('uno-btn').style.display=(hand.length===1&&!gs.unoFlags?.[actId])?'':'none';
+  $('uno-btn').style.display=(hand.length>0&&hand.length<=2&&!gs.unoFlags?.[actId])?'':'none';
 
   // Catch button
   const catchable=(roomData?.players||[]).filter(p=>p.id!==actId&&(gs.handCounts?.[p.id]??0)===1&&!gs.unoFlags?.[p.id]);
@@ -332,12 +332,6 @@ function renderHand(hand,gs,v){
       onCardClick(card,wrap,gs,v);
     });
 
-    // Double-click instantly throws a single card.
-    wrap.addEventListener('dblclick',e=>{
-      e.preventDefault();
-      quickThrowCard(card,gs,v);
-    });
-
     // Drag-up gesture throws card quickly (desktop + touch pointers).
     bindDragThrow(wrap,card,gs,v);
     container.appendChild(wrap);
@@ -419,19 +413,9 @@ function isPlayable(card,gs,v){
       const fT = gt(first), fC = gc(first), fV = gv(first);
       
       if (fT === 'number' && myT === 'number') {
-        const currentlySameColor = selectedCards.every(c => gc(c) === fC);
         const currentlySameValue = selectedCards.every(c => gv(c) === fV);
-        
-        if (currentlySameColor && !currentlySameValue) {
-          // Locked into 'same color' stack
-          return myC === fC;
-        } else if (currentlySameValue && !currentlySameColor) {
-          // Locked into 'same value' stack
-          return myV === fV;
-        } else {
-          // Currently only 1 card, or cards match BOTH (e.g. duplicate identical cards)
-          return myC === fC || myV === fV;
-        }
+        if (currentlySameValue && myV === fV) return true;
+        return false;
       } else if (fT !== 'number' && myT !== 'number') {
         return fT === myT; // Must be same action type
       }
@@ -516,10 +500,10 @@ async function submitPlay(cardIds,color,gs,v){
     const sameColor=colors[0]!=='wild'&&colors.every(c=>c===colors[0]);
     const sameAction=types[0]!=='number'&&types.every(t=>t===types[0]);
     const sameNumber=types.every(t=>t==='number')&&vals.every(n=>n===vals[0]);
-    // Allow: all numbers same color, OR all numbers same value, OR all same action
+    // Allow: all numbers same value, OR all same action
     const allNumber=types.every(t=>t==='number');
-    if(!((allNumber&&sameColor)||(allNumber&&sameNumber)||(sameAction))){
-      setStatus('Invalid multi-play: must be same number, same color, or same action.','w',2600);
+    if(!((allNumber&&sameNumber)||(sameAction))){
+      setStatus('Invalid multi-play: must be same number value, or same exact action.','w',2600);
       return;
     }
   }

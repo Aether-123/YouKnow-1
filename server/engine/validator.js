@@ -78,10 +78,6 @@ function validateStack(playerId, move, gameState, rules, context) {
     if (!types.every(t => t === types[0])) {
       return { ok:false, error:'All action cards played together must be the same type.' };
     }
-    const colors = cards.map(c => getColor(c, gameState.isLight));
-    if (!colors.every(c => c === colors[0])) {
-      return { ok:false, error:'All action cards played together must be the same color.' };
-    }
   }
   // If all number, must be same value
   if (isNumber && !cards.every(c => getValue(c, gameState.isLight) === getValue(cards[0], gameState.isLight))) {
@@ -142,15 +138,8 @@ function validatePlay(playerId, move, gameState, rules, context) {
       return { ok:false, error:'Cannot play number and action cards together.' };
     }
     if (isAllNumber) {
-      // House rule: allow mixed numbers if all colors match
       if (!values.every(v => v === values[0])) {
-        if (!(rules.houseRuleAllowSameColorMulti && colors.every(c => c === colors[0]))) {
-          return { ok:false, error:'All number cards played together must have the same value, unless all are the same color (house rule).' };
-        }
-      }
-      // If all numbers, either all same value (classic) or all same color (house rule)
-      if (!values.every(v => v === values[0]) && !(rules.houseRuleAllowSameColorMulti && colors.every(c => c === colors[0]))) {
-        return { ok:false, error:'All number cards played together must have the same value, unless all are the same color (house rule).' };
+        return { ok:false, error:'All number cards played together must have the same value.' };
       }
     } else if (isAllAction) {
       if (!types.every(t => t === types[0])) {
